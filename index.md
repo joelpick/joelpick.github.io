@@ -1,7 +1,6 @@
 ---
-layout: post
+layout: home
 title: Homepage
-theme: jekyll-theme-cayman
 
 ---
 
