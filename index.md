@@ -1,7 +1,6 @@
 ---
 layout: home
 title: Homepage
-theme: jekyll-theme-cayman
 ---
 
 ## Homepage
