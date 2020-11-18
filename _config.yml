@@ -1,9 +1,7 @@
+theme: minima
+author: Joel Pick
 title: Joel Pick
 email: joel.l.pick@gmail.com
 description: Joel Pick personal website
 twitter_username: joelpick
 github_username: joelpick
-
-#theme: jekyll-theme-cayman
-
-theme: jekyll-theme-cayman
