@@ -7,3 +7,6 @@ title: Research
 
 
 **Evolutionary Stasis**
+
+
+[link to Google!](.Research/analysis.html)
