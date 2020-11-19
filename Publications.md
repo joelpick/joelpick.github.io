@@ -1,6 +1,12 @@
 ---
 title: Publications
 ---
+
+
+“*Science never solves a problem without creating ten more*.”
+George Bernard Shaw
+
+
 * **Pick JL**, Hatakeyama M, Ihle KE, Gasparini J, Haussy C, Ishishita S, ... & Tschirren B (2020) Artificial selection reveals the role of transcriptional constraints in the maintenance of life history variation. Evolution Letters, 4, 200–211. doi: 10.1002/evl3.166
 
 * Pick, JL, Postma E & Tschirren B (2019) The more you get, the more you give: Positive cascading effects shape the evolutionary potential of prenatal maternal investment. Evolution Letters, 3, 412–423. doi:10.1002/evl3.125
