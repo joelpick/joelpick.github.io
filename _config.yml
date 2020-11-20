@@ -5,3 +5,6 @@ email: joel.l.pick@gmail.com
 description: Joel Pick personal website
 twitter_username: joel_l_pick
 github_username: joelpick
+header_pages:
+- Research.md
+- Publications.md
