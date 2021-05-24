@@ -3,6 +3,11 @@ layout: page
 title: R packages
 ---
 
+# [squid](https://github.com/squid-group/squid)
+with the SQuID working group
+
+squid is a tools for simulating data for mixed effects models
+
 # [metaDigitise](https://github.com/daniel1noble/metaDigitise)
 with Dan Noble and Shinichi Nakagawa
 
