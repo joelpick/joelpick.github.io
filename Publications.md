@@ -4,12 +4,17 @@ title: Publications
 ---
 
 
-“*Science never solves a problem without creating ten more*.”
+> *Science never solves a problem without creating ten more*.
 
-George Bernard Shaw
+> George Bernard Shaw
 
+---
+
+<br />
 
 PEER REVIEWED PUBLICATIONS:
+
+* Gauzere J, Walling CA, **Pick JL**, Watt K, Jack P, Morris A, Morris S, & Pemberton, JM. (2021) The role of maternally transferred antibodies in maternal performance in red deer. *Ecology Letters*, 
 
 * **Pick JL**, Hatakeyama M, Ihle KE, Gasparini J, Haussy C, Ishishita S, ... & Tschirren B (2020) Artificial selection reveals the role of transcriptional constraints in the maintenance of life history variation. *Evolution Letters*, 4, 200–211. doi: 10.1002/evl3.166
 
@@ -44,11 +49,16 @@ PEER REVIEWED PUBLICATIONS:
 * Giordano M, Costantini D, **Pick JL** & Tschirren B (2015) Female oxidative status, egg antioxidant protection and eggshell pigmentation: a supplemental feeding experiment in great tits. *Behavioural Ecology and Sociobiology*, 69, 777-785. doi:10.1007/s00265-015-1893-1
 
 
+PRE-PRINTS
+
+* **Pick JL**, Lemon H, Thomson C, & Hadfield JD (2021) Decomposing phenotypic skew and its effects on the predicted response to strong selection. *EcoEvoRxiv*, doi:10.32942/osf.io/n4g5z.  *In Review at Nature Ecology and Evolution*
+
+* **Pick JL**, Khwaja N, Spence MA, Ihle M & Nakagawa S (2019) Counter culture: Causes, extent and solutions of systematic bias in the analysis of behavioural counts. *EcoEvoRxiv*, doi:10.32942/osf.io/jq9n6.
+
+
 IN PREPARATION:
 
-* **Pick JL**, Khwaja N, Spence MA, Ihle M & Nakagawa S (2019) Counter culture: Causes, extent and solutions of systematic bias in the analysis of behavioural counts. *EcoEvoRxiv*. doi:10.32942/osf.io/jq9n6.
-
-* **Pick JL**, Lemon H, Thomson C, & Hadfield JD. The Importance of Being Normal: Decomposing phenotypic skew and its effects on the predicted response to strong selection.
-
 * **Pick JL**, Spence M, Ihle M, Schroeder J, Burke T, & Nakagawa S. Decomposing parental provisioning behaviour to understand the causes, constraints and costs of parental care. 
+
+* **Pick JL**, Senior A, & Nakagawa S. The impact of environmental amelioration on the plasticity of reproductive traits: a meta-analysis.
 
