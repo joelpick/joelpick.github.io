@@ -12,7 +12,8 @@ In the wild, many traits have been shown to be under strong selection and have a
 **Egg Morphology**
 Eggs represent a package of prenatal maternal investment, containing everything a embryo needs to develop. There is remarkable variation in size and shape, both between and within species. I am fascinated in understanding the causes and consequences of this variation within bird populations.
 
-**Statistical Methodology**
+**Statistical Methodology** 
+My work involves developing new statistical methods, as well as working towards the better understanding of existing methods, specifically in reference to mixed effects or hierarchical models.
 
 
 

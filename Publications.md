@@ -4,9 +4,11 @@ title: Publications
 ---
 
 
-> *Science never solves a problem without creating ten more*.
+---
 
-> George Bernard Shaw
+*Science never solves a problem without creating ten more*.
+
+George Bernard Shaw
 
 ---
 
