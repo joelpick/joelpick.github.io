@@ -1,0 +1,35 @@
+Blog Ideas:
+
+# The eternal question: fixed or random
+## Common answers
+- fixed = you care about it, random = you want to control for it
+- its part of the design
+- fixed number of levels
+
+## My take
+- are you interested in the specific levels, and testing between them
+- are you interested in a variance
+- how much replication do you have within levels - i.e. will shrinkage give you better estimates
+
+-deals better with unbalanced designs?
+
+
+
+#Specifying priors in MCMCglmm
+
+## Univariate
+
+### Fixed effects
+
+### Random effects
+
+#### Parameter Expanded Priors
+
+
+### Binary data
+Fix residual variance to one
+
+
+## Multivariate
+
+

@@ -1,0 +1,460 @@
+---
+title: "Efficient Animal Models in Stan"
+author: "Joel Pick"
+date: '2021-06-07'
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    number_sections: true
+    toc_depth: 3
+    highlight: pygments
+    code_folding: show
+---
+
+Two predominant programs are used for running animal models - `ASReml` and `MCMCglmm`. `ASReml` is frequentist, so runs fast and is pretty flexible. The downsides are that non-Gaussian models don't run so well, it isn't free and not many institutions have licenses. The Bayesian equivalent is `MCMCglmm`, which uses a very similar syntax to `ASReml` (until `ASReml-4`!). It runs non-Gaussian models well, is flexible and is free! The downside is that complex models take a while to run, as it uses MCMC chains. Both programs are formula based, so the user interacts with the program through a formula it specifies. Intrinsically this limits the user to the range of models that have been written into the program. 
+
+Probabilistic programming language, such as `Stan` (and `BUGS` and `JAGS`), allow you to write the code underlying a model yourself, making them extremely flexible. `Stan` uses Hamiltonian Monte Carlo instead of Gibbs Sampling (like `MCMCglmm`). This means that it is (in theory) also much faster than `MCMCglmm`. However, the process of writing and optimising itself can be time consuming, and requires a good understanding of how `Stan` works. Despite being slower to run, `MCMCglmm` might therefore be preferable in many situation as although it might run slower, it takes much less time to get the model up and running. In some situations, however, the required model structure might not be available in MCMCglmm.
+
+There are `R` packages such as `brms`, which act as wrappers to `Stan`, allowing you to specify models using common model syntax in `R`, making many complex models much more accessible. `brms` is very flexible and alongside many other things `brms` can run animal models. To do this `brms` uses the relationship matrix derived from a pedigree to estimate additive genetic effects. However, `Stan` doesn't deal well with sparse matrices, as relationship matrices typically are. 
+
+Luckily, there is another way of building an animal model in `Stan` which is more efficient, through modelling the pedigree as a Directed Acyclic Graph (DAG). 
+
+
+
+# Comparison of Methods
+Before going into to detail of how to specify these models in `Stan`, I'm going to compare `MCMCglmm`, `brms` and my `Stan` code to demonstrate the potential gain in efficiency.
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+rm(list=ls())
+library(rstan)
+rstan_options(auto_write = TRUE)
+options(mc.cores = parallel::detectCores())
+library(MCMCglmm)
+library(MasterBayes)
+library(brms)
+
+
+## function that turns pedigree into indexes rather than character strings - unknown argument defines what unknown parents are entered as (MCMCglmm and asreml want NA - stan needs 0)
+factorisePed <- function(pedigree, unknown=0){
+    new_ped <- data.frame(
+        1:nrow(pedigree), 
+        ifelse(is.na(pedigree[,2]),unknown,match(pedigree[,2], pedigree[,1])), 
+        ifelse(is.na(pedigree[,3]),unknown,match(pedigree[,3], pedigree[,1]))
+        )
+    colnames(new_ped) <- colnames(pedigree)[1:3]
+
+    return(new_ped)
+}
+
+## function to make different categories of indiual based on whther whtey ahve parents and poffspring
+divide_ped <- function(ped){
+	list(
+		NoParentsOffspring = which(ped[,2]==0 & ped[,3]==0 & ped[,1] %in% c(ped[,2],ped[,3])),
+		ParentsOffspring = which( (ped[,2]!=0 | ped[,3]!=0) & ped[,1] %in% c(ped[,2],ped[,3])),
+		NoParentsNoOffspring = which(ped[,2]==0 & ped[,3]==0 & !ped[,1] %in% c(ped[,2],ped[,3])),
+		ParentsNoOffspring = which((ped[,2]!=0 | ped[,3]!=0) & !ped[,1] %in% c(ped[,2],ped[,3]))
+	)
+}
+
+
+
+## function to make forest plot given a matrix of mean, 0.025 and 0.975
+effectPlot <- function(x, y=NULL,add=FALSE,offset=NULL, fixed=NULL, xlab="", ylab= "", xlim=NULL, col="black", cex.axis=1,pch=19,names=NULL,...){ 
+	if(is.null(y)) y <- nrow(x):1
+	y_offset <- if(is.null(offset)){ y }else{ y + offset }
+	if(is.null(xlim)){
+		xlim<- if(min(x)>0 & max(x)>0) {c(0,max(x))
+		}else if(min(x)<0&max(x)<0) {c(min(x),0)
+		}else{	range(x)}}
+	if(is.null(names)) names <- rownames(x)
+	if(!add){	
+		plot(x[,1], y, xlab=xlab, ylab=ylab, xlim=xlim, col=0, yaxt="n", ylim=c(0.5,nrow(x)+0.5), cex.axis=cex.axis,...)#c(min(y)-0.5,max(x)+0.5)
+		axis(2,y,names,cex.axis=cex.axis*1.5, las=1)
+		abline(v=0, col="grey")
+	}
+	points(x[,1], y_offset, pch=pch, col=col, cex=1.5)
+	arrows(x[,2], y_offset, x[,3], y_offset, code=3, angle=180, length=0.01,col=col, lwd=1.5)
+	if(!is.null(fixed)){
+		points(x[fixed,1], y_offset[fixed], col="red", cex=1.75)
+
+	}
+}
+
+
+## import blue tit data
+data(BTdata)
+data(BTped)
+BT_ped <- prunePed(orderPed(BTped), unique(BTdata$animal), make.base = TRUE)
+
+
+## import gryphon data
+Gped <- read.table("https://www.wildanimalmodels.org/tiki-download_wiki_attachment.php?attId=9&download=y", header=TRUE)
+Gdat <- read.table("https://www.wildanimalmodels.org/tiki-download_wiki_attachment.php?attId=10&download=y", header=TRUE)
+
+G_data <- subset(Gdat, !is.na(BWT))
+G_ped <- prunePed(orderPed(Gped), unique(G_data$ANIMAL), make.base = TRUE)
+
+```
+
+```{r, 'MCMCglmm_model_BT', cache=TRUE, echo=FALSE}
+
+Ainv_BT <- MCMCglmm::inverseA(BT_ped)$Ainv
+
+{
+ptm <- proc.time()
+
+mod_MC_BT<- MCMCglmm(tarsus ~ hatchdate + sex, random = ~animal, ginverse=list(animal=Ainv_BT), data = BTdata, verbose = FALSE, nitt=40000, thin=10, burnin=20000)
+
+ptm_MCMCglmm_BT <- proc.time() - ptm
+}
+
+```
+
+```{r, 'MCMCglmm_model_G', cache=TRUE, echo=FALSE}
+
+Ainv_G <- MCMCglmm::inverseA(G_ped)$Ainv
+{
+ptm <- proc.time()
+
+mod_MC_G<- MCMCglmm(BWT ~ factor(SEX), random = ~ANIMAL, ginverse=list(ANIMAL=Ainv_G), data = G_data, verbose = FALSE, nitt=40000, thin=10, burnin=20000)
+
+ptm_MCMCglmm_G <- proc.time() - ptm
+}
+
+```
+
+```{r, 'brms_model_BT', cache=TRUE, echo=FALSE, message=FALSE, warning=FALSE,results='hide'}
+A_BT <- solve(Ainv_BT)
+rownames(A_BT) <- rownames(Ainv_BT)
+
+{
+ptm <- proc.time()
+
+mod_brms_BT <- brm(
+  tarsus ~ hatchdate + sex + (1|animal), data = BTdata, 
+  family = gaussian(), cov_ranef = list(animal = A_BT),
+  chains = 1, cores = 1, iter = 4000, warmup = 2000
+)
+ptm_brms_BT <- proc.time() - ptm
+}
+
+```
+
+
+```{r, 'brms_model_G', cache=TRUE, echo=FALSE, message=FALSE, warning=FALSE,results='hide'}
+
+A_G <- solve(Ainv_G)
+rownames(A_G) <- rownames(Ainv_G)
+
+{
+ptm <- proc.time()
+
+mod_brms_G <- brm(
+  BWT ~ factor(SEX) + (1|ANIMAL), data = G_data, 
+  family = gaussian(), cov_ranef = list(ANIMAL = A_G),
+  chains = 1, cores = 1, iter = 4000, warmup = 2000
+)
+ptm_brms_G <- proc.time() - ptm
+}
+
+```
+
+
+
+```{r 'reduced_DAG_BT', echo=FALSE, cache=TRUE, message=FALSE, warning=FALSE,results='hide'}
+X_BT <- model.matrix(tarsus ~ hatchdate + sex, BTdata)
+MSV_BT <- inverseA(BT_ped)$dii
+stan_ped_BT <- factorisePed(BT_ped)
+animal_id_BT <- stan_ped_BT[match(as.character(BTdata$animal), BT_ped$animal),"animal"]
+
+parents_BT <- divide_ped(stan_ped_BT)
+
+stan_ped_BT2 <- rbind(c(0,-1,-1), stan_ped_BT)+1
+
+stan_dat_reduced_BT <- list(
+	N= nrow(BTdata), 
+	J= ncol(X_BT),
+	X=X_BT,
+	y=as.numeric(BTdata$tarsus), 
+	Nped = nrow(stan_ped_BT2), 
+	animal =animal_id_BT+1, 
+	dam =stan_ped_BT2$dam, 
+	sire =stan_ped_BT2$sire, 
+	MSV=c(1,MSV_BT), 
+	N_NoParentsOffspring=length(parents_BT$NoParentsOffspring),
+	N_ParentsOffspring=length(parents_BT$ParentsOffspring), 
+	N_NoOffspring=length(c(parents_BT$NoParentsNoOffspring,parents_BT$ParentsNoOffspring)), 
+	NoParentsOffspring=parents_BT$NoParentsOffspring+1, 
+	ParentsOffspring=parents_BT$ParentsOffspring+1,
+	NoOffspring=c(parents_BT$NoParentsNoOffspring,parents_BT$ParentsNoOffspring)+1
+	)
+
+stanModel_reduced <- stan_model(file = "~/joelpick/stats_blog/animal_model_comparison/animal_model_reduced_example2.stan")
+
+{
+ptm <- proc.time()
+
+mod_stan_reduced_BT <- sampling(stanModel_reduced, data = stan_dat_reduced_BT, chains=1, iter = 4000, warmup = 2000, pars=c("beta","sigma_A","sigma_E"))
+
+ptm_reduced_BT <- proc.time() - ptm
+}
+
+```
+
+```{r 'reduced_DAG_G', echo=FALSE, cache=TRUE, message=FALSE, warning=FALSE,results='hide'}
+
+X_G <- model.matrix(BWT ~ factor(SEX), G_data)
+MSV_G <- inverseA(G_ped)$dii
+stan_ped_G <- factorisePed(G_ped)
+animal_id_G <- stan_ped_G[match(as.character(G_data$ANIMAL), G_ped$ID),"ID"]
+
+parents_G <- divide_ped(stan_ped_G)
+stan_ped_G2 <- rbind(c(0,-1,-1), stan_ped_G)+1
+
+stan_dat_reduced_G <- list(
+	N= nrow(G_data), 
+	J= ncol(X_G),
+	X=X_G,
+	y=as.numeric(G_data$BWT), 
+	Nped = nrow(stan_ped_G2), 
+	animal =animal_id_G+1, 
+	dam =stan_ped_G2$MOTHER, 
+	sire =stan_ped_G2$FATHER, 
+	MSV=c(1,MSV_G), 
+	N_NoParentsOffspring=length(parents_G$NoParentsOffspring),
+	N_ParentsOffspring=length(parents_G$ParentsOffspring), 
+	N_NoOffspring=length(c(parents_G$NoParentsNoOffspring,parents_G$ParentsNoOffspring)), 
+	NoParentsOffspring=parents_G$NoParentsOffspring+1, 
+	ParentsOffspring=parents_G$ParentsOffspring+1,
+	NoOffspring=c(parents_G$NoParentsNoOffspring,parents_G$ParentsNoOffspring)+1
+	)
+
+stanModel_reduced <- stan_model(file = "~/joelpick/stats_blog/animal_model_comparison/animal_model_reduced_example2.stan")
+
+{
+ptm <- proc.time()
+
+mod_stan_reduced_G <- sampling(stanModel_reduced, data = stan_dat_reduced_G, chains=1, iter = 4000, warmup = 2000, pars=c("beta","sigma_A","sigma_E"))
+
+ptm_reduced_G <- proc.time() - ptm
+}
+
+```
+
+```{r, echo=FALSE}
+
+results_brms_BT <- rbind(summary(mod_brms_BT)$fixed,
+	summary(mod_brms_BT)$random$animal,
+	summary(mod_brms_BT)$spec_pars
+)[,c(1,3,4,6,7)]
+
+results_MCMCglmm_BT <- rbind(summary(mod_MC_BT)$sol[,1:4],summary(mod_MC_BT)$Gc,summary(mod_MC_BT)$Rc)
+results_MCMCglmm_BT[5:6,1:3]<-sqrt(results_MCMCglmm_BT[5:6,1:3])
+
+results_DAG_BT <- summary(mod_stan_reduced_BT)$summary[1:6,c(1,4,8,9)]
+
+par(mfrow=c(1,1),mar=c(5,10,1,1))
+effectPlot(results_MCMCglmm_BT[,1:3], offset=0.2, col=2)
+effectPlot(results_brms_BT[,1:3],add=TRUE)
+effectPlot(results_DAG_BT[,1:3],add=TRUE, offset=-0.2, col=4)
+
+barplot(c(ptm_MCMCglmm_BT[3],ptm_brms_BT[3],ptm_reduced_BT[3]),names.arg=c("MCMCglmm","brms","DAG"), ylab="Time elapsed (secs)", col=c(2,1,4))
+
+
+knitr::kable(rbind(MCMCglmm = results_MCMCglmm_BT[,4],
+brms = effectiveSize(posterior_samples(mod_brms_BT)[,1:6]),
+DAG = results_DAG_BT[,4]
+), caption = "Effective sample size"
+)
+
+knitr::kable(rbind(MCMCglmm = ptm_MCMCglmm_BT[3]/results_MCMCglmm_BT[,4],
+brms = ptm_brms_BT[3]/effectiveSize(posterior_samples(mod_brms_BT)[,1:6]),
+DAG = ptm_reduced_BT[3]/results_DAG_BT[,4]
+), caption = "Second per effective sample")
+
+
+
+results_brms_G <- rbind(summary(mod_brms_G)$fixed,
+	summary(mod_brms_G)$random$ANIMAL,
+	summary(mod_brms_G)$spec_pars
+)[,c(1,3,4,6,7)]
+
+results_MCMCglmm_G <- rbind(summary(mod_MC_G)$sol[,1:4],summary(mod_MC_G)$Gc,summary(mod_MC_G)$Rc)
+results_MCMCglmm_G[3:4,1:3]<-sqrt(results_MCMCglmm_G[3:4,1:3])
+
+results_DAG_G <- summary(mod_stan_reduced_G)$summary[1:4,c(1,4,8,9)]
+
+par(mfrow=c(1,1),mar=c(5,10,1,1))
+effectPlot(results_MCMCglmm_G[,1:3], offset=0.2, col=2)
+effectPlot(results_brms_G[,1:3],add=TRUE)
+effectPlot(results_DAG_G[,1:3],add=TRUE, offset=-0.2, col=4)
+
+## compare effective sample sizes - reduced model performs much better
+
+barplot(c(ptm_MCMCglmm_G[3],ptm_brms_G[3],ptm_reduced_G[3]),names.arg=c("MCMCglmm","brms","DAG"), ylab="Time elapsed (secs)", col=c(2,1,4))
+
+
+knitr::kable(rbind(MCMCglmm = results_MCMCglmm_G[,4],
+brms = effectiveSize(posterior_samples(mod_brms_G)[,1:4]),
+DAG = results_DAG_G[,4]
+), caption = "Effective sample size"
+)
+
+
+knitr::kable(rbind(MCMCglmm = ptm_MCMCglmm_G[3]/results_MCMCglmm_G[,4],
+brms = ptm_brms_G[3]/effectiveSize(posterior_samples(mod_brms_G)[,1:4]),
+DAG = ptm_reduced_G[3]/results_DAG_G[,4]
+), caption = "Second per effective sample")
+#effectiveSize(posterior_samples(mod_brms_G)[,1:4])
+
+```
+
+# Specifying an animal model as a DAG in Stan
+
+I'm going to run through specifying a animal model as a DAG in `Stan`. Although i will try to explain as I go, I'm assuming that you have a working knowledge of `Stan` code.
+
+## Method 1
+
+The basic principle of this method is looping over individuals in a pedigree, taking advantage of known relationships between parents and offspring. We know that an individual's breeding value is the means of its parents breeding values, plus a Mendelian sampling deviation (due to recombination), that is sampled from a normal distribution with mean 0 and variance $0.5V_A$ (assuming the infinitesimal model). Some individuals have one or no known parents. These individuals have a Mendelian sampling variance of $0.75V_A$ and $V_A$, respectively. The Mendelian sampling variance is further scaled according to the inbreeding coefficient of the individual (we can get this info from the pedigree). 
+
+
+```{r, eval=FALSE}
+
+stan_ped2 <- rbind(c(0,-1,-1), stan_ped)+1
+
+stan_dat_simple <- list(
+	N= nrow(BTdata), 
+	J= ncol(X),
+	X=X,
+	y=as.numeric(BTdata$tarsus), 
+	Nped = nrow(stan_ped2), 
+	animal =animal_id+1, 
+	dam =stan_ped2$dam, 
+	sire =stan_ped2$sire, 
+	MSV=c(1,MSV)
+	)
+
+stanModel_simple <- stan_model(file = "~/joelpick/stats_blog/animal_model_comparison/simple_DAG.stan")
+
+
+
+```
+
+
+## Method 2
+A more efficient way of doing this is to split individuals into three groups, for which we have different information - individuals with no parents (all have breeding values with mean 0 and variance $V_A$), individuals with parents and offspring, and individuals with parents and no offspring. Only the middle group have to be looped over, which makes the computation a bit more efficient. 
+
+## Method 3 - the reduced animal model
+An even more efficient way of modelling this is known as the reduced animal model. We only have information about the Mendelian sampling deviation of an individual if they have offspring. For those individuals without offspring, we cant separate their Mendelian sampling deviation from their residual value (or permanent environment effect with repeated measures). In other models this generates considerable posterior covariance between $V_A$ and $V_E$. We can avoid this by modelling the breeding values of these individuals as the mean of their parents breeding values, and a mixture model for the residuals, with variance $MV_A + V_E$ 
+
+
+```{r, eval=FALSE}
+#fixed effects
+X <- model.matrix(tarsus ~ hatchdate + sex, BTdata)
+
+# prune and order pedigree
+ped <- prunePed(orderPed(BTped), unique(BTdata$animal), make.base = TRUE)
+
+## calculate Mendelian sampling variance
+MSV <- inverseA(ped)$dii
+
+## make pedigree into indexes rather than character strings
+stan_ped <- factorisePed(ped)
+
+##match animal ids in data to new id in ped
+animal_id <- stan_ped[match(as.character(BTdata$animal), ped$animal),"animal"]
+
+NoParentsOffspring <- which(stan_ped[,2]==0 & stan_ped[,3]==0 & stan_ped[,1] %in% c(stan_ped[,2],stan_ped[,3]))
+
+ParentsOffspring <- which( (stan_ped[,2]!=0 | stan_ped[,3]!=0) & stan_ped[,1] %in% c(stan_ped[,2],stan_ped[,3]))# & !stan_ped[,1] %in% NoParents
+#any(ParentsOffspring %in% NoParentsOffspring)
+
+NoParentsNoOffspring <- which(stan_ped[,2]==0 & stan_ped[,3]==0 & !stan_ped[,1] %in% c(stan_ped[,2],stan_ped[,3]))
+
+#any(NoParentsNoOffspring  %in% c(ParentsOffspring, NoParentsOffspring))
+ParentsNoOffspring <- which((stan_ped[,2]!=0 | stan_ped[,3]!=0) & !stan_ped[,1] %in% c(stan_ped[,2],stan_ped[,3]))
+#any(ParentsNoOffspring  %in% c(ParentsOffspring, NoParentsOffspring, NoParentsNoOffspring))
+
+length(NoParentsOffspring)
+length(ParentsOffspring)
+length(NoParentsNoOffspring)
+length(ParentsNoOffspring)
+any(!stan_ped[,1] %in% c(NoParentsOffspring,ParentsOffspring,NoParentsNoOffspring,ParentsNoOffspring))
+
+
+## make the first row in the pedigree the 'unknown parent' - bit of a hack to make looping over the pedigree faster
+stan_ped2 <- rbind(c(0,-1,-1), stan_ped)+1
+
+stan_dat_reduced2 <- list(
+	N= nrow(BTdata), 
+	J= ncol(X),
+	X=X,
+	y=as.numeric(BTdata$tarsus), 
+	Nped = nrow(stan_ped2), 
+	animal =animal_id+1, 
+	dam =stan_ped2$dam, 
+	sire =stan_ped2$sire, 
+	MSV=c(1,MSV), 
+	N_NoParentsOffspring=length(NoParentsOffspring), 
+	N_ParentsOffspring=length(ParentsOffspring), 
+	N_NoOffspring=length(c(NoParentsNoOffspring,ParentsNoOffspring)), 
+	NoParentsOffspring=NoParentsOffspring+1, 
+	ParentsOffspring=ParentsOffspring+1,
+	NoOffspring=c(NoParentsNoOffspring,ParentsNoOffspring)+1
+	)
+
+stanModel_reduced2 <- stan_model(file = "~/joelpick/stats_blog/animal_model_comparison/animal_model_reduced_example2.stan")
+
+
+{
+ptm <- proc.time()
+
+mod_stan_reduced2 <- sampling(stanModel_reduced2, data = stan_dat_reduced2, chains=1, iter = 4000, warmup = 2000, pars=c("beta","sigma_A","sigma_E"))
+
+ptm_DAG <- proc.time() - ptm
+}
+ptm_DAG
+
+summary(mod_stan_reduced2)$summary[,c(1,4,8,9)]
+pairs(mod_stan_reduced2)
+```
+
+# Reduced animal model with permanent environment effects 
+
+
+# Code for MCMCglmm and brms
+
+```{r, eval=FALSE}
+
+## import blue tit data
+data(BTdata)
+data(BTped)
+
+ped <- prunePed(orderPed(BTped), unique(BTdata$animal), make.base = TRUE)
+
+mod_MC<- MCMCglmm(tarsus ~ hatchdate + sex, random = ~animal, pedigree = ped, data = BTdata, verbose = FALSE, nitt=40000, thin=1, burnin=20000)
+
+
+summary(mod_MC)
+
+```
+
+
+```{r, eval=FALSE}
+inv.A <- MCMCglmm::inverseA(ped)
+A <- solve(inv.A$Ainv)
+rownames(A) <- rownames(inv.A$Ainv)
+
+mod_brms <- brm(
+  tarsus ~ hatchdate + sex + (1|animal), data = BTdata, 
+  family = gaussian(), cov_ranef = list(animal = A),
+  chains = 1, cores = 1, iter = 4000, warmup = 2000
+)
+
+summary(mod_brms)
+
+```
+
+
