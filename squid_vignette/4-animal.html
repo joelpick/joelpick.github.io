@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>The {squid} R Package Vignette</title>
+  <title>4 Genetic effects | The {squid} R Package Vignette</title>
   <meta name="description" content="This is a vignette for using the squid R package." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="The {squid} R Package Vignette" />
+  <meta property="og:title" content="4 Genetic effects | The {squid} R Package Vignette" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="squid-group/squid" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="The {squid} R Package Vignette" />
+  <meta name="twitter:title" content="4 Genetic effects | The {squid} R Package Vignette" />
   
   <meta name="twitter:description" content="This is a vignette for using the squid R package." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="1-linearmod.html"/>
+<link rel="prev" href="3.3-multivariate-random-slopes.html"/>
+<link rel="next" href="4.1-va.html"/>
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -236,84 +236,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">The {squid} R Package Vignette</h1>
-<p class="author"><em>Joel Pick</em></p>
-<p class="date"><em>2022-01-13</em></p>
-</div>
-<div id="intro" class="section level1 unnumbered">
-<h1>The {squid} R package</h1>
-<p>The squid R package is designed to simplify data simulation from a highly flexible set of models, including:</p>
-<ul>
-<li>Correlated and interacting predictor variables</li>
-<li>Non-gaussian data (Poisson and binomial)</li>
-<li>Crossed and nested hierarchical structures</li>
-<li>Random intercepts and slopes</li>
-<li>Univariate and multivariate data</li>
-<li>Within level-specific residual variance (DHGLMs)</li>
-<li>Additive genetic effects (animal models)</li>
-<li>Phylogenetic effects with different models of evolution</li>
-<li>Temporal and spatial autocorrelation</li>
-<li>Missing data (MNAR, MAR and MCAR)</li>
-<li>Temporal sampling</li>
-</ul>
-<p>The main idea is that anything you can model using a linear mixed effect model framework (assuming underlying multivariate normality) you should be able to simulate using the squid package.</p>
-<div id="why-use-squid" class="section level3" number="0.0.1">
-<h3><span class="header-section-number">0.0.1</span> Why use squid?</h3>
-<p>For people confident with programming in R, simulating data doesn’t provide a huge challenge. However, to those less confident with programming, or the process of data simulation more generally, starting with simulations can seem like a daunting task. The {squid} R package is designed to facilitate that transition, and to focus attention on the data structure and parameters needed for simulation, rather than the programming knowledge.</p>
-<p>{squid} also provides a useful tool for experienced programmers. One problematic aspect of collaborative coding (or reviewing someone else’s code) is that many people have very contrasting programming styles. Another motivation for the squid package is that it provides a consistent framework for simulations, which can be interpreted by many people rather than having to decipher someone’s personal code.</p>
-</div>
-<div id="using-the-vignette" class="section level3 unnumbered">
-<h3>Using the vignette</h3>
-<p>If you are new to using the {squid} package, we recommend that you read Sections <a href="1-linearmod.html#linearmod">1</a> and <a href="2-hierarchical.html#hierarchical">2</a> to familiarise yourself with the squid package before moving onto the more advanced topics. The later sections assume an certain level of understanding of how the functions work.</p>
-<p>The vignette assumes that you have a working knowledge of R.</p>
-<!-- 
-## Functionality
-
-This is a summary of the desired functionality laid out in the different SQuID working group documents. 
-
-|     |     |
-| --- | --- |
-| No limit in the number of predictors  | ✅ |
-| Interactions between predictors | ✅ |
-| Temporal effects | |
-|    - Linear/non-linear/cyclical| ✅ |
-|    - Temporal autocorrelation| ❌ |
-| Non-Gaussian data | ✅ |
-| IxE / random slopes | ✅ |
-| Within level-specific residual variance (DGLMM) | ✅ |
-|     - Equation on residual variance | ✅ |
-| No limit in the number of responses | ✅ |
-| Recursive relationships | ❌ |
-| Environmental dependency of cov matrices | Needs Discussion |
-| Additive genetic effects | ✅ |
-|     - Including indirect genetic effects | ✅ |
-| G,E correlations | In Progress |
-| Phylogenetic effects | In Progress |
-|     - Different models of evolution | ❌ |
-
-<br> 
--->
-</div>
-<div id="installation" class="section level3 unnumbered">
-<h3>Installation</h3>
-<p>The new squid functions are currently in the development version of the squid package on github:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;squid-group/squid&quot;</span>, <span class="at">ref=</span><span class="st">&quot;development&quot;</span>)</span>
-<span id="cb1-2"><a href="index.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(squid)</span></code></pre></div>
-</div>
-<div id="issues-and-bugs" class="section level3 unnumbered">
-<h3>Issues and bugs</h3>
-<p>It would be great if you could report any suggestions, issues or bugs using github issues <a href="https://github.com/squid-group/squid/issues" class="uri">https://github.com/squid-group/squid/issues</a>. It is worth checking to see if anyone else has a similar problem first, and adding comments to their issue, before starting a new one.</p>
-
-</div>
+<div id="animal" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Genetic effects</h1>
+<p>This vignette assumes that you are generally happy with how the <code>sim_population()</code> function works.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="1-linearmod.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="3.3-multivariate-random-slopes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="4.1-va.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

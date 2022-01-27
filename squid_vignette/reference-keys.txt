@@ -1,7 +1,4 @@
-intro
-using-the-vignette
-installation
-issues-and-bugs
+why-use-squid
 linearmod
 simulate_population-function
 simple-linear-model

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>The {squid} R Package Vignette</title>
+  <title>7.1 Nested | The {squid} R Package Vignette</title>
   <meta name="description" content="This is a vignette for using the squid R package." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="The {squid} R Package Vignette" />
+  <meta property="og:title" content="7.1 Nested | The {squid} R Package Vignette" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="squid-group/squid" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="The {squid} R Package Vignette" />
+  <meta name="twitter:title" content="7.1 Nested | The {squid} R Package Vignette" />
   
   <meta name="twitter:description" content="This is a vignette for using the squid R package." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="1-linearmod.html"/>
+<link rel="prev" href="7-sampling.html"/>
+<link rel="next" href="7.2-missing-data.html"/>
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -236,75 +236,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">The {squid} R Package Vignette</h1>
-<p class="author"><em>Joel Pick</em></p>
-<p class="date"><em>2022-01-13</em></p>
-</div>
-<div id="intro" class="section level1 unnumbered">
-<h1>The {squid} R package</h1>
-<p>The squid R package is designed to simplify data simulation from a highly flexible set of models, including:</p>
-<ul>
-<li>Correlated and interacting predictor variables</li>
-<li>Non-gaussian data (Poisson and binomial)</li>
-<li>Crossed and nested hierarchical structures</li>
-<li>Random intercepts and slopes</li>
-<li>Univariate and multivariate data</li>
-<li>Within level-specific residual variance (DHGLMs)</li>
-<li>Additive genetic effects (animal models)</li>
-<li>Phylogenetic effects with different models of evolution</li>
-<li>Temporal and spatial autocorrelation</li>
-<li>Missing data (MNAR, MAR and MCAR)</li>
-<li>Temporal sampling</li>
-</ul>
-<p>The main idea is that anything you can model using a linear mixed effect model framework (assuming underlying multivariate normality) you should be able to simulate using the squid package.</p>
-<div id="why-use-squid" class="section level3" number="0.0.1">
-<h3><span class="header-section-number">0.0.1</span> Why use squid?</h3>
-<p>For people confident with programming in R, simulating data doesn’t provide a huge challenge. However, to those less confident with programming, or the process of data simulation more generally, starting with simulations can seem like a daunting task. The {squid} R package is designed to facilitate that transition, and to focus attention on the data structure and parameters needed for simulation, rather than the programming knowledge.</p>
-<p>{squid} also provides a useful tool for experienced programmers. One problematic aspect of collaborative coding (or reviewing someone else’s code) is that many people have very contrasting programming styles. Another motivation for the squid package is that it provides a consistent framework for simulations, which can be interpreted by many people rather than having to decipher someone’s personal code.</p>
-</div>
-<div id="using-the-vignette" class="section level3 unnumbered">
-<h3>Using the vignette</h3>
-<p>If you are new to using the {squid} package, we recommend that you read Sections <a href="1-linearmod.html#linearmod">1</a> and <a href="2-hierarchical.html#hierarchical">2</a> to familiarise yourself with the squid package before moving onto the more advanced topics. The later sections assume an certain level of understanding of how the functions work.</p>
-<p>The vignette assumes that you have a working knowledge of R.</p>
-<!-- 
-## Functionality
-
-This is a summary of the desired functionality laid out in the different SQuID working group documents. 
-
-|     |     |
-| --- | --- |
-| No limit in the number of predictors  | ✅ |
-| Interactions between predictors | ✅ |
-| Temporal effects | |
-|    - Linear/non-linear/cyclical| ✅ |
-|    - Temporal autocorrelation| ❌ |
-| Non-Gaussian data | ✅ |
-| IxE / random slopes | ✅ |
-| Within level-specific residual variance (DGLMM) | ✅ |
-|     - Equation on residual variance | ✅ |
-| No limit in the number of responses | ✅ |
-| Recursive relationships | ❌ |
-| Environmental dependency of cov matrices | Needs Discussion |
-| Additive genetic effects | ✅ |
-|     - Including indirect genetic effects | ✅ |
-| G,E correlations | In Progress |
-| Phylogenetic effects | In Progress |
-|     - Different models of evolution | ❌ |
-
-<br> 
--->
-</div>
-<div id="installation" class="section level3 unnumbered">
-<h3>Installation</h3>
-<p>The new squid functions are currently in the development version of the squid package on github:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;squid-group/squid&quot;</span>, <span class="at">ref=</span><span class="st">&quot;development&quot;</span>)</span>
-<span id="cb1-2"><a href="index.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(squid)</span></code></pre></div>
-</div>
-<div id="issues-and-bugs" class="section level3 unnumbered">
-<h3>Issues and bugs</h3>
-<p>It would be great if you could report any suggestions, issues or bugs using github issues <a href="https://github.com/squid-group/squid/issues" class="uri">https://github.com/squid-group/squid/issues</a>. It is worth checking to see if anyone else has a similar problem first, and adding comments to their issue, before starting a new one.</p>
-
+<div id="nested" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Nested</h2>
+<p>Nested sampling assumes that you have a nested structure, and allows you to sample different numbers at each hierarchical level. The <code>param</code> input is a matrix with (named) columns. The rows of this matrix represent different sampling sets. This is most easily put together using the <code>cbind()</code> (column bind) function, specifying the names. The number of repeat observations for a higher level can be specified using name ‘observation’ (this doesn’t have to exist in the data structure). For example</p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="7.1-nested.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(<span class="at">individual=</span><span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>),<span class="at">observation=</span><span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span></code></pre></div>
+<pre><code>##      individual observation
+## [1,]         10          10
+## [2,]         15           5</code></pre>
+<p>would represent sampling the data structure above, the first set having 10 individuals each with 10 observations</p>
+<p>Note this sampling procedure only produces balanced sampling designs. For unbalanced designs see ‘missing data’ below.</p>
+<div id="worked-example-1" class="section level3" number="7.1.1">
+<h3><span class="header-section-number">7.1.1</span> Worked example 1</h3>
+<p>We want to see how the number of repeat measurements on individuals affects power. In order to vary the number of observations of an individual, we could specify:</p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="7.1-nested.html#cb154-1" aria-hidden="true" tabindex="-1"></a>param <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="at">nest=</span><span class="dv">10</span>,<span class="at">individual=</span><span class="dv">10</span>,<span class="at">observation=</span><span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="7.1-nested.html#cb155-1" aria-hidden="true" tabindex="-1"></a>sample_data <span class="ot">&lt;-</span> <span class="fu">sample_population</span>(pop_data, </span>
+<span id="cb155-2"><a href="7.1-nested.html#cb155-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;nested&quot;</span>, </span>
+<span id="cb155-3"><a href="7.1-nested.html#cb155-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">param =</span> param, </span>
+<span id="cb155-4"><a href="7.1-nested.html#cb155-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb155-5"><a href="7.1-nested.html#cb155-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-6"><a href="7.1-nested.html#cb155-6" aria-hidden="true" tabindex="-1"></a><span class="fu">get_sample_data</span>(sample_data, <span class="at">sample_set=</span><span class="dv">2</span>, <span class="at">list=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## [[1]]
+##                y individual_effect environment residual_effect nest individual
+##    1:  1.0776189         0.2640626   0.4046920       0.6112102    1          6
+##    2:  0.7797727         0.2640626   1.4133222      -0.1909510    1          6
+##    3: -0.9362748         0.2640626   0.5067232      -1.4536990    1          6
+##    4: -1.0459139         0.2640626  -1.1156093      -0.7521719    1          6
+##    5:  1.8669656         0.2640626   1.1954589       1.0051735    1          6
+##   ---                                                                         
+##  996: -0.9845959        -0.2309050  -0.7803824      -0.3634997   10        200
+##  997: -0.9251869        -0.2309050  -0.4327889      -0.4778875   10        200
+##  998: -0.1094476        -0.2309050  -0.8191679       0.5310413   10        200
+##  999:  0.5653681        -0.2309050   0.1862761       0.7031350   10        200
+## 1000: -1.9353851        -0.2309050  -0.5789413      -1.4150095   10        200
+##       squid_pop
+##    1:         1
+##    2:         1
+##    3:         1
+##    4:         1
+##    5:         1
+##   ---          
+##  996:         1
+##  997:         1
+##  998:         1
+##  999:         1
+## 1000:         1</code></pre>
 </div>
 </div>
             </section>
@@ -312,8 +287,8 @@ This is a summary of the desired functionality laid out in the different SQuID w
           </div>
         </div>
       </div>
-
-<a href="1-linearmod.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="7-sampling.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="7.2-missing-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

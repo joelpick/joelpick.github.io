@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>The {squid} R Package Vignette</title>
+  <title>4.1 Additive genetics effects | The {squid} R Package Vignette</title>
   <meta name="description" content="This is a vignette for using the squid R package." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="The {squid} R Package Vignette" />
+  <meta property="og:title" content="4.1 Additive genetics effects | The {squid} R Package Vignette" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="squid-group/squid" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="The {squid} R Package Vignette" />
+  <meta name="twitter:title" content="4.1 Additive genetics effects | The {squid} R Package Vignette" />
   
   <meta name="twitter:description" content="This is a vignette for using the squid R package." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="1-linearmod.html"/>
+<link rel="prev" href="4-animal.html"/>
+<link rel="next" href="4.2-multivariate-genetic-effects.html"/>
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -236,84 +236,91 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">The {squid} R Package Vignette</h1>
-<p class="author"><em>Joel Pick</em></p>
-<p class="date"><em>2022-01-13</em></p>
-</div>
-<div id="intro" class="section level1 unnumbered">
-<h1>The {squid} R package</h1>
-<p>The squid R package is designed to simplify data simulation from a highly flexible set of models, including:</p>
-<ul>
-<li>Correlated and interacting predictor variables</li>
-<li>Non-gaussian data (Poisson and binomial)</li>
-<li>Crossed and nested hierarchical structures</li>
-<li>Random intercepts and slopes</li>
-<li>Univariate and multivariate data</li>
-<li>Within level-specific residual variance (DHGLMs)</li>
-<li>Additive genetic effects (animal models)</li>
-<li>Phylogenetic effects with different models of evolution</li>
-<li>Temporal and spatial autocorrelation</li>
-<li>Missing data (MNAR, MAR and MCAR)</li>
-<li>Temporal sampling</li>
-</ul>
-<p>The main idea is that anything you can model using a linear mixed effect model framework (assuming underlying multivariate normality) you should be able to simulate using the squid package.</p>
-<div id="why-use-squid" class="section level3" number="0.0.1">
-<h3><span class="header-section-number">0.0.1</span> Why use squid?</h3>
-<p>For people confident with programming in R, simulating data doesn’t provide a huge challenge. However, to those less confident with programming, or the process of data simulation more generally, starting with simulations can seem like a daunting task. The {squid} R package is designed to facilitate that transition, and to focus attention on the data structure and parameters needed for simulation, rather than the programming knowledge.</p>
-<p>{squid} also provides a useful tool for experienced programmers. One problematic aspect of collaborative coding (or reviewing someone else’s code) is that many people have very contrasting programming styles. Another motivation for the squid package is that it provides a consistent framework for simulations, which can be interpreted by many people rather than having to decipher someone’s personal code.</p>
-</div>
-<div id="using-the-vignette" class="section level3 unnumbered">
-<h3>Using the vignette</h3>
-<p>If you are new to using the {squid} package, we recommend that you read Sections <a href="1-linearmod.html#linearmod">1</a> and <a href="2-hierarchical.html#hierarchical">2</a> to familiarise yourself with the squid package before moving onto the more advanced topics. The later sections assume an certain level of understanding of how the functions work.</p>
-<p>The vignette assumes that you have a working knowledge of R.</p>
-<!-- 
-## Functionality
-
-This is a summary of the desired functionality laid out in the different SQuID working group documents. 
-
-|     |     |
-| --- | --- |
-| No limit in the number of predictors  | ✅ |
-| Interactions between predictors | ✅ |
-| Temporal effects | |
-|    - Linear/non-linear/cyclical| ✅ |
-|    - Temporal autocorrelation| ❌ |
-| Non-Gaussian data | ✅ |
-| IxE / random slopes | ✅ |
-| Within level-specific residual variance (DGLMM) | ✅ |
-|     - Equation on residual variance | ✅ |
-| No limit in the number of responses | ✅ |
-| Recursive relationships | ❌ |
-| Environmental dependency of cov matrices | Needs Discussion |
-| Additive genetic effects | ✅ |
-|     - Including indirect genetic effects | ✅ |
-| G,E correlations | In Progress |
-| Phylogenetic effects | In Progress |
-|     - Different models of evolution | ❌ |
-
-<br> 
--->
-</div>
-<div id="installation" class="section level3 unnumbered">
-<h3>Installation</h3>
-<p>The new squid functions are currently in the development version of the squid package on github:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;squid-group/squid&quot;</span>, <span class="at">ref=</span><span class="st">&quot;development&quot;</span>)</span>
-<span id="cb1-2"><a href="index.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(squid)</span></code></pre></div>
-</div>
-<div id="issues-and-bugs" class="section level3 unnumbered">
-<h3>Issues and bugs</h3>
-<p>It would be great if you could report any suggestions, issues or bugs using github issues <a href="https://github.com/squid-group/squid/issues" class="uri">https://github.com/squid-group/squid/issues</a>. It is worth checking to see if anyone else has a similar problem first, and adding comments to their issue, before starting a new one.</p>
-
-</div>
+<div id="va" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Additive genetics effects</h2>
+<p>In order to simulate breeding values (additive genetic effects), we can provide the <code>simulate_population()</code> function with the relatedness structure in the population. The simplest way to do this is providing a pedigree using the the <code>pedigree</code> argument (a genetic relatedness matrix could also be given to the <code>cov_str</code> argument). The input to this argument needs to be a list, and the name of the pedigree in the list links it with the item in the parameter list.</p>
+<p>When simulating breeding values, <strong>all</strong> individuals in pedigree need to be in the data_structure and <em>vice versa</em>. Having unsampled individuals (for example the base population) can be achieved in the sampling stage (not implemented yet).</p>
+<p>Lets start by importing a pedigree</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="4.1-va.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MCMCglmm)</span>
+<span id="cb119-2"><a href="4.1-va.html#cb119-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(BTped)</span>
+<span id="cb119-3"><a href="4.1-va.html#cb119-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(BTped)</span></code></pre></div>
+<pre><code>##    animal  dam sire
+## 1 R187557 &lt;NA&gt; &lt;NA&gt;
+## 2 R187559 &lt;NA&gt; &lt;NA&gt;
+## 3 R187568 &lt;NA&gt; &lt;NA&gt;
+## 4 R187518 &lt;NA&gt; &lt;NA&gt;
+## 5 R187528 &lt;NA&gt; &lt;NA&gt;
+## 6 R187945 &lt;NA&gt; &lt;NA&gt;</code></pre>
+<p>We can use this pedigree as a data_structure</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="4.1-va.html#cb121-1" aria-hidden="true" tabindex="-1"></a>squid_data <span class="ot">&lt;-</span> <span class="fu">simulate_population</span>(</span>
+<span id="cb121-2"><a href="4.1-va.html#cb121-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data_structure =</span> BTped, </span>
+<span id="cb121-3"><a href="4.1-va.html#cb121-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb121-4"><a href="4.1-va.html#cb121-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">pedigree =</span> <span class="fu">list</span>(<span class="at">animal=</span>BTped),</span>
+<span id="cb121-5"><a href="4.1-va.html#cb121-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb121-6"><a href="4.1-va.html#cb121-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">parameters =</span><span class="fu">list</span>(</span>
+<span id="cb121-7"><a href="4.1-va.html#cb121-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">animal =</span> <span class="fu">list</span>(</span>
+<span id="cb121-8"><a href="4.1-va.html#cb121-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">vcov =</span> <span class="fl">0.2</span></span>
+<span id="cb121-9"><a href="4.1-va.html#cb121-9" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb121-10"><a href="4.1-va.html#cb121-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">residual =</span> <span class="fu">list</span>(</span>
+<span id="cb121-11"><a href="4.1-va.html#cb121-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">vcov =</span> <span class="fl">0.5</span></span>
+<span id="cb121-12"><a href="4.1-va.html#cb121-12" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb121-13"><a href="4.1-va.html#cb121-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb121-14"><a href="4.1-va.html#cb121-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb121-15"><a href="4.1-va.html#cb121-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-16"><a href="4.1-va.html#cb121-16" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_population_data</span>(squid_data)</span>
+<span id="cb121-17"><a href="4.1-va.html#cb121-17" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<pre><code>##             y animal_effect residual_effect  animal  dam sire squid_pop
+## 1: 0.04081045    -0.6641957       0.7050061 R187557 &lt;NA&gt; &lt;NA&gt;         1
+## 2: 1.64217844     0.1948256       1.4473528 R187559 &lt;NA&gt; &lt;NA&gt;         1
+## 3: 0.58349829     0.3558713       0.2276269 R187568 &lt;NA&gt; &lt;NA&gt;         1
+## 4: 0.50739820    -0.3339127       0.8413109 R187518 &lt;NA&gt; &lt;NA&gt;         1
+## 5: 0.86358604     0.6327017       0.2308843 R187528 &lt;NA&gt; &lt;NA&gt;         1
+## 6: 0.05093026    -0.3916677       0.4425979 R187945 &lt;NA&gt; &lt;NA&gt;         1</code></pre>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="4.1-va.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ainv&lt;-inverseA(BTped)$Ainv</span></span>
+<span id="cb123-2"><a href="4.1-va.html#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="co"># mod &lt;- MCMCglmm(y~1, random=~ animal,data=data,ginverse=list(animal=Ainv),verbose=FALSE)</span></span>
+<span id="cb123-3"><a href="4.1-va.html#cb123-3" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(mod)</span></span></code></pre></div>
+<p>We might want to simulate repeated measurements to allow estimation of permanent environment effects. This is where being able to have something in the parameter list with a different name to the grouping factor is useful. In this way permanent environmental and additive genetic effects can be simulated in different parts of the parameter list, and linked to the same part of the data_structure.</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="4.1-va.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="do">## make data structure with two observations per individual</span></span>
+<span id="cb124-2"><a href="4.1-va.html#cb124-2" aria-hidden="true" tabindex="-1"></a>ds <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">individual=</span><span class="fu">rep</span>(BTped[,<span class="dv">1</span>], <span class="dv">2</span>))</span>
+<span id="cb124-3"><a href="4.1-va.html#cb124-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-4"><a href="4.1-va.html#cb124-4" aria-hidden="true" tabindex="-1"></a>squid_data <span class="ot">&lt;-</span> <span class="fu">simulate_population</span>(</span>
+<span id="cb124-5"><a href="4.1-va.html#cb124-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data_structure =</span> ds, </span>
+<span id="cb124-6"><a href="4.1-va.html#cb124-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">pedigree=</span><span class="fu">list</span>(<span class="at">animal=</span>BTped),</span>
+<span id="cb124-7"><a href="4.1-va.html#cb124-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">parameters =</span> <span class="fu">list</span>(</span>
+<span id="cb124-8"><a href="4.1-va.html#cb124-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">individual =</span> <span class="fu">list</span>(</span>
+<span id="cb124-9"><a href="4.1-va.html#cb124-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">vcov =</span> <span class="fl">0.3</span></span>
+<span id="cb124-10"><a href="4.1-va.html#cb124-10" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb124-11"><a href="4.1-va.html#cb124-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">animal =</span> <span class="fu">list</span>(</span>
+<span id="cb124-12"><a href="4.1-va.html#cb124-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">group=</span><span class="st">&quot;individual&quot;</span>,</span>
+<span id="cb124-13"><a href="4.1-va.html#cb124-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">vcov =</span> <span class="fl">0.2</span></span>
+<span id="cb124-14"><a href="4.1-va.html#cb124-14" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb124-15"><a href="4.1-va.html#cb124-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">residual =</span> <span class="fu">list</span>(</span>
+<span id="cb124-16"><a href="4.1-va.html#cb124-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">vcov =</span> <span class="fl">0.5</span></span>
+<span id="cb124-17"><a href="4.1-va.html#cb124-17" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb124-18"><a href="4.1-va.html#cb124-18" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb124-19"><a href="4.1-va.html#cb124-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb124-20"><a href="4.1-va.html#cb124-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-21"><a href="4.1-va.html#cb124-21" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_population_data</span>(squid_data)</span>
+<span id="cb124-22"><a href="4.1-va.html#cb124-22" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<pre><code>##             y individual_effect animal_effect residual_effect individual squid_pop
+## 1: -0.4328383       -0.29360599     0.3520114      -0.4912437    R187557         1
+## 2: -1.9791371       -0.48994158     0.1477371      -1.6369326    R187559         1
+## 3:  0.2816935       -0.09546838     0.1867809       0.1903810    R187568         1
+## 4: -0.8663294       -0.83242353     0.2038205      -0.2377265    R187518         1
+## 5: -0.1817992        0.48492783    -0.4788215      -0.1879056    R187528         1
+## 6:  0.2296829        0.10305026    -0.1654942       0.2921268    R187945         1</code></pre>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="4.1-va.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ainv&lt;-inverseA(BTped)$Ainv</span></span>
+<span id="cb126-2"><a href="4.1-va.html#cb126-2" aria-hidden="true" tabindex="-1"></a><span class="co"># data$animal_id &lt;- data$individual</span></span>
+<span id="cb126-3"><a href="4.1-va.html#cb126-3" aria-hidden="true" tabindex="-1"></a><span class="co"># mod &lt;- MCMCglmm(y~1, random=~ individual + animal_id,data=data,ginverse=list(animal_id=Ainv),verbose=FALSE)</span></span>
+<span id="cb126-4"><a href="4.1-va.html#cb126-4" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(mod)</span></span></code></pre></div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="1-linearmod.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="4-animal.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="4.2-multivariate-genetic-effects.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

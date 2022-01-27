@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>The {squid} R Package Vignette</title>
+  <title>4.8 Genetic Groups | The {squid} R Package Vignette</title>
   <meta name="description" content="This is a vignette for using the squid R package." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="The {squid} R Package Vignette" />
+  <meta property="og:title" content="4.8 Genetic Groups | The {squid} R Package Vignette" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="squid-group/squid" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="The {squid} R Package Vignette" />
+  <meta name="twitter:title" content="4.8 Genetic Groups | The {squid} R Package Vignette" />
   
   <meta name="twitter:description" content="This is a vignette for using the squid R package." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="1-linearmod.html"/>
+<link rel="prev" href="4.7-inbreeding-depression.html"/>
+<link rel="next" href="5-phylogenetic.html"/>
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -236,84 +236,114 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">The {squid} R Package Vignette</h1>
-<p class="author"><em>Joel Pick</em></p>
-<p class="date"><em>2022-01-13</em></p>
-</div>
-<div id="intro" class="section level1 unnumbered">
-<h1>The {squid} R package</h1>
-<p>The squid R package is designed to simplify data simulation from a highly flexible set of models, including:</p>
-<ul>
-<li>Correlated and interacting predictor variables</li>
-<li>Non-gaussian data (Poisson and binomial)</li>
-<li>Crossed and nested hierarchical structures</li>
-<li>Random intercepts and slopes</li>
-<li>Univariate and multivariate data</li>
-<li>Within level-specific residual variance (DHGLMs)</li>
-<li>Additive genetic effects (animal models)</li>
-<li>Phylogenetic effects with different models of evolution</li>
-<li>Temporal and spatial autocorrelation</li>
-<li>Missing data (MNAR, MAR and MCAR)</li>
-<li>Temporal sampling</li>
-</ul>
-<p>The main idea is that anything you can model using a linear mixed effect model framework (assuming underlying multivariate normality) you should be able to simulate using the squid package.</p>
-<div id="why-use-squid" class="section level3" number="0.0.1">
-<h3><span class="header-section-number">0.0.1</span> Why use squid?</h3>
-<p>For people confident with programming in R, simulating data doesn’t provide a huge challenge. However, to those less confident with programming, or the process of data simulation more generally, starting with simulations can seem like a daunting task. The {squid} R package is designed to facilitate that transition, and to focus attention on the data structure and parameters needed for simulation, rather than the programming knowledge.</p>
-<p>{squid} also provides a useful tool for experienced programmers. One problematic aspect of collaborative coding (or reviewing someone else’s code) is that many people have very contrasting programming styles. Another motivation for the squid package is that it provides a consistent framework for simulations, which can be interpreted by many people rather than having to decipher someone’s personal code.</p>
-</div>
-<div id="using-the-vignette" class="section level3 unnumbered">
-<h3>Using the vignette</h3>
-<p>If you are new to using the {squid} package, we recommend that you read Sections <a href="1-linearmod.html#linearmod">1</a> and <a href="2-hierarchical.html#hierarchical">2</a> to familiarise yourself with the squid package before moving onto the more advanced topics. The later sections assume an certain level of understanding of how the functions work.</p>
-<p>The vignette assumes that you have a working knowledge of R.</p>
+<div id="genetic-groups" class="section level2" number="4.8">
+<h2><span class="header-section-number">4.8</span> Genetic Groups</h2>
+<p>Coming soon…</p>
 <!-- 
-## Functionality
+# Breeding values
+We can provide the pedigree/phylogeny as an argument to the function. The pedigree is given as a list - the name of the pedigree in the list links it with the item in the parameter list. This is where being able to have something in the parameter list with a different name to the grouping factor is useful. In this way permanent environmental and additive genetic effects can be simulated. Something like:
 
-This is a summary of the desired functionality laid out in the different SQuID working group documents. 
+```r
+param <- list(
+  individual = list(
+    vcov = 0.3
+  ),
+  animal = list(
+    group="individual",
+    vcov = 0.2
+  ),
+  residual = list(
+    vcov = 0.5
+  )
+)
+```
 
-|     |     |
-| --- | --- |
-| No limit in the number of predictors  | ✅ |
-| Interactions between predictors | ✅ |
-| Temporal effects | |
-|    - Linear/non-linear/cyclical| ✅ |
-|    - Temporal autocorrelation| ❌ |
-| Non-Gaussian data | ✅ |
-| IxE / random slopes | ✅ |
-| Within level-specific residual variance (DGLMM) | ✅ |
-|     - Equation on residual variance | ✅ |
-| No limit in the number of responses | ✅ |
-| Recursive relationships | ❌ |
-| Environmental dependency of cov matrices | Needs Discussion |
-| Additive genetic effects | ✅ |
-|     - Including indirect genetic effects | ✅ |
-| G,E correlations | In Progress |
-| Phylogenetic effects | In Progress |
-|     - Different models of evolution | ❌ |
+Then a bit of code to sort out the pedigree. **NOTE** the `simulate_population` function has very little error checking of pedigree structure at the moment 
 
-<br> 
--->
-</div>
-<div id="installation" class="section level3 unnumbered">
-<h3>Installation</h3>
-<p>The new squid functions are currently in the development version of the squid package on github:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;squid-group/squid&quot;</span>, <span class="at">ref=</span><span class="st">&quot;development&quot;</span>)</span>
-<span id="cb1-2"><a href="index.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(squid)</span></code></pre></div>
-</div>
-<div id="issues-and-bugs" class="section level3 unnumbered">
-<h3>Issues and bugs</h3>
-<p>It would be great if you could report any suggestions, issues or bugs using github issues <a href="https://github.com/squid-group/squid/issues" class="uri">https://github.com/squid-group/squid/issues</a>. It is worth checking to see if anyone else has a similar problem first, and adding comments to their issue, before starting a new one.</p>
+```r
+data(BTped)
+
+## make data structure with two observations per individual
+ds <- data.frame(individual=rep(BTped[,1], 2))
+
+squid_data <- simulate_population(
+  data_structure = ds, 
+  parameters = param,
+  pedigree=list(animal=BTped)
+)
+
+data <- get_population_data(squid_data)
+head(data)
+```
+
+```
+##             y individual_effect animal_effect residual_effect individual squid_pop
+## 1:  0.2054728         0.3647747    -0.3516428     0.192340912    R187557         1
+## 2:  0.1901580        -0.5212842    -0.1242425     0.835684747    R187559         1
+## 3: -0.4636293        -1.2171669     0.4357885     0.317749116    R187568         1
+## 4: -0.7689670        -0.6471104    -0.1312073     0.009350635    R187518         1
+## 5:  0.3627139         0.2410205     0.1055127     0.016180700    R187528         1
+## 6:  0.8575037        -0.1376601     0.3170952     0.678068541    R187945         1
+```
+
+```r
+Ainv<-inverseA(BTped)$Ainv
+data$animal_id <- data$individual
+# mod <- MCMCglmm(y~1, random=~ individual + animal_id,data=data,ginverse=list(animal_id=Ainv),verbose=FALSE)
+# summary(mod)
+```
+
+We can also run multivariate animal models and have the breeding values simulated at the residual level
+
+```r
+squid_data <- simulate_population(
+  data_structure = BTped,
+  parameters = list(
+    animal = list(
+      vcov = diag(2)
+    ),
+    residual = list(
+      vcov = diag(2)
+    )
+  ),
+  N_response=2,  
+  pedigree = list(animal = BTped)
+)
+
+data <- get_population_data(squid_data)
+head(data)
+```
+
+```
+##            y1         y2 animal_effect1 animal_effect2 residual_effect1 residual_effect2  animal  dam sire squid_pop
+## 1: -0.4589514 -1.0528377      0.5029813     0.02683459       -0.9619327      -1.07967234 R187557 <NA> <NA>         1
+## 2: -0.1425061  2.1591464     -0.7614319     1.16748278        0.6189258       0.99166358 R187559 <NA> <NA>         1
+## 3:  0.5263576 -0.2870441      1.3621305     0.16468478       -0.8357729      -0.45172890 R187568 <NA> <NA>         1
+## 4:  1.3815401  0.5802029      0.9490355    -0.34187137        0.4325046       0.92207428 R187518 <NA> <NA>         1
+## 5: -0.9491094 -0.2123363     -0.7907768     0.43713212       -0.1583326      -0.64946841 R187528 <NA> <NA>         1
+## 6:  0.6990614 -0.5142343      1.3578721    -0.41943013       -0.6588106      -0.09480414 R187945 <NA> <NA>         1
+```
+
+```r
+# mod <- MCMCglmm(cbind(y1,y2)~1,random=~us(trait):animal, rcov=~us(trait):units,data=data,family=rep("gaussian",2),verbose=FALSE,ginverse=list(animal=Ainv))
+```
+
+<br>
+
+
+
+
+ -->
 
 </div>
-</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="1-linearmod.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="4.7-inbreeding-depression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="5-phylogenetic.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

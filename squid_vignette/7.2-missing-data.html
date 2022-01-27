@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>The {squid} R Package Vignette</title>
+  <title>7.2 Missing data | The {squid} R Package Vignette</title>
   <meta name="description" content="This is a vignette for using the squid R package." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="The {squid} R Package Vignette" />
+  <meta property="og:title" content="7.2 Missing data | The {squid} R Package Vignette" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="squid-group/squid" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="The {squid} R Package Vignette" />
+  <meta name="twitter:title" content="7.2 Missing data | The {squid} R Package Vignette" />
   
   <meta name="twitter:description" content="This is a vignette for using the squid R package." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="1-linearmod.html"/>
+<link rel="prev" href="7.1-nested.html"/>
+<link rel="next" href="7.3-temporal-sampling.html"/>
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -236,75 +236,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">The {squid} R Package Vignette</h1>
-<p class="author"><em>Joel Pick</em></p>
-<p class="date"><em>2022-01-13</em></p>
-</div>
-<div id="intro" class="section level1 unnumbered">
-<h1>The {squid} R package</h1>
-<p>The squid R package is designed to simplify data simulation from a highly flexible set of models, including:</p>
+<div id="missing-data" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> Missing data</h2>
+<p>Missing data is generated through creating probabilities of being sampled using logistic regression. Missingness can then be a function of any of the simulated variables. In this was <code>sample_population()</code> can implements the three classes of missing data:</p>
 <ul>
-<li>Correlated and interacting predictor variables</li>
-<li>Non-gaussian data (Poisson and binomial)</li>
-<li>Crossed and nested hierarchical structures</li>
-<li>Random intercepts and slopes</li>
-<li>Univariate and multivariate data</li>
-<li>Within level-specific residual variance (DHGLMs)</li>
-<li>Additive genetic effects (animal models)</li>
-<li>Phylogenetic effects with different models of evolution</li>
-<li>Temporal and spatial autocorrelation</li>
-<li>Missing data (MNAR, MAR and MCAR)</li>
-<li>Temporal sampling</li>
+<li><strong>M</strong>issing <strong>C</strong>ompletely <strong>A</strong>t <strong>R</strong>andom (MCAR)</li>
+<li><strong>M</strong>issing <strong>A</strong>t <strong>R</strong>andom (MAR)</li>
+<li><strong>M</strong>issing <strong>N</strong>ot <strong>A</strong>t <strong>R</strong>andom (MNAR)</li>
 </ul>
-<p>The main idea is that anything you can model using a linear mixed effect model framework (assuming underlying multivariate normality) you should be able to simulate using the squid package.</p>
-<div id="why-use-squid" class="section level3" number="0.0.1">
-<h3><span class="header-section-number">0.0.1</span> Why use squid?</h3>
-<p>For people confident with programming in R, simulating data doesn’t provide a huge challenge. However, to those less confident with programming, or the process of data simulation more generally, starting with simulations can seem like a daunting task. The {squid} R package is designed to facilitate that transition, and to focus attention on the data structure and parameters needed for simulation, rather than the programming knowledge.</p>
-<p>{squid} also provides a useful tool for experienced programmers. One problematic aspect of collaborative coding (or reviewing someone else’s code) is that many people have very contrasting programming styles. Another motivation for the squid package is that it provides a consistent framework for simulations, which can be interpreted by many people rather than having to decipher someone’s personal code.</p>
-</div>
-<div id="using-the-vignette" class="section level3 unnumbered">
-<h3>Using the vignette</h3>
-<p>If you are new to using the {squid} package, we recommend that you read Sections <a href="1-linearmod.html#linearmod">1</a> and <a href="2-hierarchical.html#hierarchical">2</a> to familiarise yourself with the squid package before moving onto the more advanced topics. The later sections assume an certain level of understanding of how the functions work.</p>
-<p>The vignette assumes that you have a working knowledge of R.</p>
-<!-- 
-## Functionality
-
-This is a summary of the desired functionality laid out in the different SQuID working group documents. 
-
-|     |     |
-| --- | --- |
-| No limit in the number of predictors  | ✅ |
-| Interactions between predictors | ✅ |
-| Temporal effects | |
-|    - Linear/non-linear/cyclical| ✅ |
-|    - Temporal autocorrelation| ❌ |
-| Non-Gaussian data | ✅ |
-| IxE / random slopes | ✅ |
-| Within level-specific residual variance (DGLMM) | ✅ |
-|     - Equation on residual variance | ✅ |
-| No limit in the number of responses | ✅ |
-| Recursive relationships | ❌ |
-| Environmental dependency of cov matrices | Needs Discussion |
-| Additive genetic effects | ✅ |
-|     - Including indirect genetic effects | ✅ |
-| G,E correlations | In Progress |
-| Phylogenetic effects | In Progress |
-|     - Different models of evolution | ❌ |
-
-<br> 
+<!--
+Logistic function - probability of being sampled
+    MNAR Y = beta_1 * body size
+    MNAR Y = beta_1 * (temp +residual)
+    MAR Y = beta_2*temp
 -->
+<div id="mcar" class="section level3" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> MCAR</h3>
+<p>Missing completely at random occurs when the probability of missingness is not dependent on anything. This can be implemented through a logistic regression, where only the intercept is specified:
+<span class="math display">\[ logit(p) = beta_0 \]</span></p>
+<p>Note this intercept is on the logit scale, so 0 is equivalent to 0.5.</p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="7.2-missing-data.html#cb157-1" aria-hidden="true" tabindex="-1"></a>sample_data <span class="ot">&lt;-</span> <span class="fu">sample_population</span>(pop_data, </span>
+<span id="cb157-2"><a href="7.2-missing-data.html#cb157-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;missing&quot;</span>, </span>
+<span id="cb157-3"><a href="7.2-missing-data.html#cb157-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">param =</span> <span class="st">&quot;0&quot;</span>, </span>
+<span id="cb157-4"><a href="7.2-missing-data.html#cb157-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot=</span><span class="cn">FALSE</span>)</span></code></pre></div>
 </div>
-<div id="installation" class="section level3 unnumbered">
-<h3>Installation</h3>
-<p>The new squid functions are currently in the development version of the squid package on github:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;squid-group/squid&quot;</span>, <span class="at">ref=</span><span class="st">&quot;development&quot;</span>)</span>
-<span id="cb1-2"><a href="index.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(squid)</span></code></pre></div>
+<div id="mar" class="section level3" number="7.2.2">
+<h3><span class="header-section-number">7.2.2</span> MAR</h3>
+<p>Missing at random occurs when the probability of missingness is dependent on a predictor variable (or a variables correlated with y). This can be implemented through a logistic regression, where the predictor variable(s) is a predictor(s) of y:
+<span class="math display">\[ logit(p) = beta_0 + beta_1*environment \]</span></p>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="7.2-missing-data.html#cb158-1" aria-hidden="true" tabindex="-1"></a>sample_data <span class="ot">&lt;-</span> <span class="fu">sample_population</span>(pop_data, </span>
+<span id="cb158-2"><a href="7.2-missing-data.html#cb158-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;missing&quot;</span>, </span>
+<span id="cb158-3"><a href="7.2-missing-data.html#cb158-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">param =</span> <span class="st">&quot;0.5*environment&quot;</span>, </span>
+<span id="cb158-4"><a href="7.2-missing-data.html#cb158-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<p>The predictor variables are scaled (mean 0, variance 1), so the slopes are directly comparable across traits, and intercept represents the mean (on the logit scale).</p>
 </div>
-<div id="issues-and-bugs" class="section level3 unnumbered">
-<h3>Issues and bugs</h3>
-<p>It would be great if you could report any suggestions, issues or bugs using github issues <a href="https://github.com/squid-group/squid/issues" class="uri">https://github.com/squid-group/squid/issues</a>. It is worth checking to see if anyone else has a similar problem first, and adding comments to their issue, before starting a new one.</p>
-
+<div id="mnar" class="section level3" number="7.2.3">
+<h3><span class="header-section-number">7.2.3</span> MNAR</h3>
+<p>Missing not at random occurs when the probability of missingness is dependent on the response variable itself variable (i.e. y). This can be implemented through a logistic regression, where the predictor variable is y:
+<span class="math display">\[ logit(p) = beta_0 + beta_1*y \]</span>
+Again y is scaled.</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="7.2-missing-data.html#cb159-1" aria-hidden="true" tabindex="-1"></a>sample_data <span class="ot">&lt;-</span> <span class="fu">sample_population</span>(pop_data, </span>
+<span id="cb159-2"><a href="7.2-missing-data.html#cb159-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;missing&quot;</span>, </span>
+<span id="cb159-3"><a href="7.2-missing-data.html#cb159-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">param =</span> <span class="st">&quot;0.5*y&quot;</span>, </span>
+<span id="cb159-4"><a href="7.2-missing-data.html#cb159-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<!-- example of variation in sampling between individuals, but not related to phenotype - create an individual level variable with beta=0 (doesn't affect phenotype, and then do sampling based on that) -->
 </div>
 </div>
             </section>
@@ -312,8 +287,8 @@ This is a summary of the desired functionality laid out in the different SQuID w
           </div>
         </div>
       </div>
-
-<a href="1-linearmod.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="7.1-nested.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="7.3-temporal-sampling.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
