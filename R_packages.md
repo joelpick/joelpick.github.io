@@ -3,10 +3,12 @@ layout: page
 title: R packages
 ---
 
-# [squid](https://github.com/squid-group/squid)
-with the SQuID working group
+<img id='logo' src='squidSim_blue.png' align='left' alt='' style='padding-right:20px;'>
 
-squid is a high flexible tools for simulating data for mixed effects models
+# [squidSim](https://github.com/squid-group/squidSim)
+with the [SQuID working group](https://squid-group.github.io/squid-website/)
+
+squidSim is a high flexible tool for simulating data from mixed effects models
 
 <br />
 
@@ -14,6 +16,13 @@ squid is a high flexible tools for simulating data for mixed effects models
 with Dan Noble and Shinichi Nakagawa
 
 metaDigitise is a tool that helps extract data from figures, primarily designed for meta-analysis
+
+<br />
+
+# [shinyDigitise](https://github.com/EIvimeyCook/ShinyDigitise)
+with Ed Ivimey-Cook and Dan Noble
+
+shinyDigitise is a shiny interface for metaDigitise
 
 <br />
 
