@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>The {squid} R Package Vignette</title>
+  <title>The {squidSim} R Package Vignette</title>
   <meta name="description" content="This is a vignette for using the squid R package." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="The {squid} R Package Vignette" />
+  <meta property="og:title" content="The {squidSim} R Package Vignette" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="squid-group/squid" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="The {squid} R Package Vignette" />
+  <meta name="twitter:title" content="The {squidSim} R Package Vignette" />
   
   <meta name="twitter:description" content="This is a vignette for using the squid R package." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Pick" />
 
 
-<meta name="date" content="2022-01-13" />
+<meta name="date" content="2022-02-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 
 <link rel="next" href="1-linearmod.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -133,9 +133,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>The {squid} R package</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>The {squidSim} R package</a>
 <ul>
-<li class="chapter" data-level="0.0.1" data-path="index.html"><a href="index.html#why-use-squid"><i class="fa fa-check"></i><b>0.0.1</b> Why use squid?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#why-use-squidsim"><i class="fa fa-check"></i>Why use squidSim?</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#using-the-vignette"><i class="fa fa-check"></i>Using the vignette</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i>Installation</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#issues-and-bugs"><i class="fa fa-check"></i>Issues and bugs</a></li>
@@ -157,7 +157,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.6" data-path="1.6-known-predictors.html"><a href="1.6-known-predictors.html"><i class="fa fa-check"></i><b>1.6</b> Known Predictors</a></li>
 <li class="chapter" data-level="1.7" data-path="1.7-nonGaussian.html"><a href="1.7-nonGaussian.html"><i class="fa fa-check"></i><b>1.7</b> Non-Gaussian phenotypes</a></li>
 <li class="chapter" data-level="1.8" data-path="1.8-modeleq.html"><a href="1.8-modeleq.html"><i class="fa fa-check"></i><b>1.8</b> Model equations</a></li>
-<li class="chapter" data-level="1.9" data-path="1.9-simulating-multiple-populations.html"><a href="1.9-simulating-multiple-populations.html"><i class="fa fa-check"></i><b>1.9</b> Simulating multiple populations</a></li>
+<li class="chapter" data-level="1.9" data-path="1.9-npop.html"><a href="1.9-npop.html"><i class="fa fa-check"></i><b>1.9</b> Simulating multiple populations</a></li>
 <li class="chapter" data-level="1.10" data-path="1.10-parameter-list-summary.html"><a href="1.10-parameter-list-summary.html"><i class="fa fa-check"></i><b>1.10</b> Parameter list summary</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="2-hierarchical.html"><a href="2-hierarchical.html"><i class="fa fa-check"></i><b>2</b> Hierarchical structure</a>
@@ -228,7 +228,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The {squid} R Package Vignette</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The {squidSim} R Package Vignette</a>
           </h1>
         </div>
 
@@ -237,13 +237,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="header">
-<h1 class="title">The {squid} R Package Vignette</h1>
+<h1 class="title">The {squidSim} R Package Vignette</h1>
 <p class="author"><em>Joel Pick</em></p>
-<p class="date"><em>2022-01-13</em></p>
+<p class="date"><em>2022-02-08</em></p>
 </div>
 <div id="intro" class="section level1 unnumbered">
-<h1>The {squid} R package</h1>
-<p>The squid R package is designed to simplify data simulation from a highly flexible set of models, including:</p>
+<h1>The {squidSim} R package</h1>
+<p>The squidSim R package is designed to simplify data simulation from a highly flexible set of models, including:</p>
 <ul>
 <li>Correlated and interacting predictor variables</li>
 <li>Non-gaussian data (Poisson and binomial)</li>
@@ -258,14 +258,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Temporal sampling</li>
 </ul>
 <p>The main idea is that anything you can model using a linear mixed effect model framework (assuming underlying multivariate normality) you should be able to simulate using the squid package.</p>
-<div id="why-use-squid" class="section level3" number="0.0.1">
-<h3><span class="header-section-number">0.0.1</span> Why use squid?</h3>
-<p>For people confident with programming in R, simulating data doesn’t provide a huge challenge. However, to those less confident with programming, or the process of data simulation more generally, starting with simulations can seem like a daunting task. The {squid} R package is designed to facilitate that transition, and to focus attention on the data structure and parameters needed for simulation, rather than the programming knowledge.</p>
-<p>{squid} also provides a useful tool for experienced programmers. One problematic aspect of collaborative coding (or reviewing someone else’s code) is that many people have very contrasting programming styles. Another motivation for the squid package is that it provides a consistent framework for simulations, which can be interpreted by many people rather than having to decipher someone’s personal code.</p>
+<div id="why-use-squidsim" class="section level3 unnumbered">
+<h3>Why use squidSim?</h3>
+<p>For people confident with programming in R, simulating data doesn’t provide a huge challenge. However, to those less confident with programming, or the process of data simulation more generally, starting with simulations can seem like a daunting task. The {squidSim} R package is designed to facilitate that transition, and to focus attention on the data structure and parameters needed for simulation, rather than the programming knowledge.</p>
+<p>{squidSim} also provides a useful tool for experienced programmers. One problematic aspect of collaborative coding (or reviewing someone else’s code) is that many people have very contrasting programming styles. Another motivation for the squid package is that it provides a consistent framework for simulations, which can be interpreted by many people rather than having to decipher someone’s personal code.</p>
 </div>
 <div id="using-the-vignette" class="section level3 unnumbered">
 <h3>Using the vignette</h3>
-<p>If you are new to using the {squid} package, we recommend that you read Sections <a href="1-linearmod.html#linearmod">1</a> and <a href="2-hierarchical.html#hierarchical">2</a> to familiarise yourself with the squid package before moving onto the more advanced topics. The later sections assume an certain level of understanding of how the functions work.</p>
+<p>If you are new to using the {squidSim} package, we recommend that you read Sections <a href="1-linearmod.html#linearmod">1</a> and <a href="2-hierarchical.html#hierarchical">2</a> to familiarise yourself with the squid package before moving onto the more advanced topics. The later sections assume an certain level of understanding of how the functions work.</p>
 <p>The vignette assumes that you have a working knowledge of R.</p>
 <!-- 
 ## Functionality
@@ -298,12 +298,12 @@ This is a summary of the desired functionality laid out in the different SQuID w
 <div id="installation" class="section level3 unnumbered">
 <h3>Installation</h3>
 <p>The new squid functions are currently in the development version of the squid package on github:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;squid-group/squid&quot;</span>, <span class="at">ref=</span><span class="st">&quot;development&quot;</span>)</span>
-<span id="cb1-2"><a href="index.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(squid)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;squid-group/squidSim&quot;</span>)</span>
+<span id="cb1-2"><a href="index.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(squidSim)</span></code></pre></div>
 </div>
 <div id="issues-and-bugs" class="section level3 unnumbered">
 <h3>Issues and bugs</h3>
-<p>It would be great if you could report any suggestions, issues or bugs using github issues <a href="https://github.com/squid-group/squid/issues" class="uri">https://github.com/squid-group/squid/issues</a>. It is worth checking to see if anyone else has a similar problem first, and adding comments to their issue, before starting a new one.</p>
+<p>It would be great if you could report any suggestions, issues or bugs using github issues <a href="https://github.com/squid-group/squidSim/issues" class="uri">https://github.com/squid-group/squidSim/issues</a>. It is worth checking to see if anyone else has a similar problem first, and adding comments to their issue, before starting a new one.</p>
 
 </div>
 </div>

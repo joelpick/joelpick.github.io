@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.1 Additive genetics effects | The {squid} R Package Vignette</title>
+  <title>4.1 Additive genetics effects | The {squidSim} R Package Vignette</title>
   <meta name="description" content="This is a vignette for using the squid R package." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.1 Additive genetics effects | The {squid} R Package Vignette" />
+  <meta property="og:title" content="4.1 Additive genetics effects | The {squidSim} R Package Vignette" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="squid-group/squid" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.1 Additive genetics effects | The {squid} R Package Vignette" />
+  <meta name="twitter:title" content="4.1 Additive genetics effects | The {squidSim} R Package Vignette" />
   
   <meta name="twitter:description" content="This is a vignette for using the squid R package." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Pick" />
 
 
-<meta name="date" content="2022-01-13" />
+<meta name="date" content="2022-02-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="4-animal.html"/>
 <link rel="next" href="4.2-multivariate-genetic-effects.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -133,9 +133,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>The {squid} R package</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>The {squidSim} R package</a>
 <ul>
-<li class="chapter" data-level="0.0.1" data-path="index.html"><a href="index.html#why-use-squid"><i class="fa fa-check"></i><b>0.0.1</b> Why use squid?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#why-use-squidsim"><i class="fa fa-check"></i>Why use squidSim?</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#using-the-vignette"><i class="fa fa-check"></i>Using the vignette</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i>Installation</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#issues-and-bugs"><i class="fa fa-check"></i>Issues and bugs</a></li>
@@ -157,7 +157,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.6" data-path="1.6-known-predictors.html"><a href="1.6-known-predictors.html"><i class="fa fa-check"></i><b>1.6</b> Known Predictors</a></li>
 <li class="chapter" data-level="1.7" data-path="1.7-nonGaussian.html"><a href="1.7-nonGaussian.html"><i class="fa fa-check"></i><b>1.7</b> Non-Gaussian phenotypes</a></li>
 <li class="chapter" data-level="1.8" data-path="1.8-modeleq.html"><a href="1.8-modeleq.html"><i class="fa fa-check"></i><b>1.8</b> Model equations</a></li>
-<li class="chapter" data-level="1.9" data-path="1.9-simulating-multiple-populations.html"><a href="1.9-simulating-multiple-populations.html"><i class="fa fa-check"></i><b>1.9</b> Simulating multiple populations</a></li>
+<li class="chapter" data-level="1.9" data-path="1.9-npop.html"><a href="1.9-npop.html"><i class="fa fa-check"></i><b>1.9</b> Simulating multiple populations</a></li>
 <li class="chapter" data-level="1.10" data-path="1.10-parameter-list-summary.html"><a href="1.10-parameter-list-summary.html"><i class="fa fa-check"></i><b>1.10</b> Parameter list summary</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="2-hierarchical.html"><a href="2-hierarchical.html"><i class="fa fa-check"></i><b>2</b> Hierarchical structure</a>
@@ -228,7 +228,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The {squid} R Package Vignette</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The {squidSim} R Package Vignette</a>
           </h1>
         </div>
 
@@ -269,13 +269,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb121-15"><a href="4.1-va.html#cb121-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb121-16"><a href="4.1-va.html#cb121-16" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_population_data</span>(squid_data)</span>
 <span id="cb121-17"><a href="4.1-va.html#cb121-17" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
-<pre><code>##             y animal_effect residual_effect  animal  dam sire squid_pop
-## 1: 0.04081045    -0.6641957       0.7050061 R187557 &lt;NA&gt; &lt;NA&gt;         1
-## 2: 1.64217844     0.1948256       1.4473528 R187559 &lt;NA&gt; &lt;NA&gt;         1
-## 3: 0.58349829     0.3558713       0.2276269 R187568 &lt;NA&gt; &lt;NA&gt;         1
-## 4: 0.50739820    -0.3339127       0.8413109 R187518 &lt;NA&gt; &lt;NA&gt;         1
-## 5: 0.86358604     0.6327017       0.2308843 R187528 &lt;NA&gt; &lt;NA&gt;         1
-## 6: 0.05093026    -0.3916677       0.4425979 R187945 &lt;NA&gt; &lt;NA&gt;         1</code></pre>
+<pre><code>##              y animal_effect residual_effect  animal  dam sire squid_pop
+## 1: -0.65765199    0.01917794      -0.6768299 R187557 &lt;NA&gt; &lt;NA&gt;         1
+## 2: -0.02916514    0.11020280      -0.1393679 R187559 &lt;NA&gt; &lt;NA&gt;         1
+## 3:  0.73555249    0.13615972       0.5993928 R187568 &lt;NA&gt; &lt;NA&gt;         1
+## 4:  0.14372639    0.39430575      -0.2505794 R187518 &lt;NA&gt; &lt;NA&gt;         1
+## 5: -0.38166578   -0.04680802      -0.3348578 R187528 &lt;NA&gt; &lt;NA&gt;         1
+## 6:  0.55500173    0.15233047       0.4026713 R187945 &lt;NA&gt; &lt;NA&gt;         1</code></pre>
 <div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="4.1-va.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ainv&lt;-inverseA(BTped)$Ainv</span></span>
 <span id="cb123-2"><a href="4.1-va.html#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="co"># mod &lt;- MCMCglmm(y~1, random=~ animal,data=data,ginverse=list(animal=Ainv),verbose=FALSE)</span></span>
 <span id="cb123-3"><a href="4.1-va.html#cb123-3" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(mod)</span></span></code></pre></div>
@@ -302,13 +302,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb124-20"><a href="4.1-va.html#cb124-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb124-21"><a href="4.1-va.html#cb124-21" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_population_data</span>(squid_data)</span>
 <span id="cb124-22"><a href="4.1-va.html#cb124-22" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
-<pre><code>##             y individual_effect animal_effect residual_effect individual squid_pop
-## 1: -0.4328383       -0.29360599     0.3520114      -0.4912437    R187557         1
-## 2: -1.9791371       -0.48994158     0.1477371      -1.6369326    R187559         1
-## 3:  0.2816935       -0.09546838     0.1867809       0.1903810    R187568         1
-## 4: -0.8663294       -0.83242353     0.2038205      -0.2377265    R187518         1
-## 5: -0.1817992        0.48492783    -0.4788215      -0.1879056    R187528         1
-## 6:  0.2296829        0.10305026    -0.1654942       0.2921268    R187945         1</code></pre>
+<pre><code>##              y individual_effect animal_effect residual_effect individual
+## 1: -1.19025061        -0.1703646    -0.2329027      -0.7869833    R187557
+## 2:  0.54661980        -0.5451609     0.7023840       0.3893967    R187559
+## 3: -1.64377053        -0.1527442     0.1496201      -1.6406464    R187568
+## 4: -0.44251476        -0.4784984     0.2411269      -0.2051433    R187518
+## 5: -0.56165586         0.2606702    -0.5633643      -0.2589617    R187528
+## 6:  0.02779786        -0.3408230    -0.2981108       0.6667316    R187945
+##    squid_pop
+## 1:         1
+## 2:         1
+## 3:         1
+## 4:         1
+## 5:         1
+## 6:         1</code></pre>
 <div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="4.1-va.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ainv&lt;-inverseA(BTped)$Ainv</span></span>
 <span id="cb126-2"><a href="4.1-va.html#cb126-2" aria-hidden="true" tabindex="-1"></a><span class="co"># data$animal_id &lt;- data$individual</span></span>
 <span id="cb126-3"><a href="4.1-va.html#cb126-3" aria-hidden="true" tabindex="-1"></a><span class="co"># mod &lt;- MCMCglmm(y~1, random=~ individual + animal_id,data=data,ginverse=list(animal_id=Ainv),verbose=FALSE)</span></span>

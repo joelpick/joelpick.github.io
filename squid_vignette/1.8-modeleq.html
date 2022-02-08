@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.8 Model equations | The {squid} R Package Vignette</title>
+  <title>1.8 Model equations | The {squidSim} R Package Vignette</title>
   <meta name="description" content="This is a vignette for using the squid R package." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.8 Model equations | The {squid} R Package Vignette" />
+  <meta property="og:title" content="1.8 Model equations | The {squidSim} R Package Vignette" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="squid-group/squid" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.8 Model equations | The {squid} R Package Vignette" />
+  <meta name="twitter:title" content="1.8 Model equations | The {squidSim} R Package Vignette" />
   
   <meta name="twitter:description" content="This is a vignette for using the squid R package." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Pick" />
 
 
-<meta name="date" content="2022-01-13" />
+<meta name="date" content="2022-02-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,8 +32,8 @@
   
   
 <link rel="prev" href="1.7-nonGaussian.html"/>
-<link rel="next" href="1.9-simulating-multiple-populations.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<link rel="next" href="1.9-npop.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -133,9 +133,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>The {squid} R package</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>The {squidSim} R package</a>
 <ul>
-<li class="chapter" data-level="0.0.1" data-path="index.html"><a href="index.html#why-use-squid"><i class="fa fa-check"></i><b>0.0.1</b> Why use squid?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#why-use-squidsim"><i class="fa fa-check"></i>Why use squidSim?</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#using-the-vignette"><i class="fa fa-check"></i>Using the vignette</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i>Installation</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#issues-and-bugs"><i class="fa fa-check"></i>Issues and bugs</a></li>
@@ -157,7 +157,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.6" data-path="1.6-known-predictors.html"><a href="1.6-known-predictors.html"><i class="fa fa-check"></i><b>1.6</b> Known Predictors</a></li>
 <li class="chapter" data-level="1.7" data-path="1.7-nonGaussian.html"><a href="1.7-nonGaussian.html"><i class="fa fa-check"></i><b>1.7</b> Non-Gaussian phenotypes</a></li>
 <li class="chapter" data-level="1.8" data-path="1.8-modeleq.html"><a href="1.8-modeleq.html"><i class="fa fa-check"></i><b>1.8</b> Model equations</a></li>
-<li class="chapter" data-level="1.9" data-path="1.9-simulating-multiple-populations.html"><a href="1.9-simulating-multiple-populations.html"><i class="fa fa-check"></i><b>1.9</b> Simulating multiple populations</a></li>
+<li class="chapter" data-level="1.9" data-path="1.9-npop.html"><a href="1.9-npop.html"><i class="fa fa-check"></i><b>1.9</b> Simulating multiple populations</a></li>
 <li class="chapter" data-level="1.10" data-path="1.10-parameter-list-summary.html"><a href="1.10-parameter-list-summary.html"><i class="fa fa-check"></i><b>1.10</b> Parameter list summary</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="2-hierarchical.html"><a href="2-hierarchical.html"><i class="fa fa-check"></i><b>2</b> Hierarchical structure</a>
@@ -228,7 +228,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The {squid} R Package Vignette</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The {squidSim} R Package Vignette</a>
           </h1>
         </div>
 
@@ -263,7 +263,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb52-17"><a href="1.8-modeleq.html#cb52-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb52-18"><a href="1.8-modeleq.html#cb52-18" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(<span class="fu">lm</span>(y <span class="sc">~</span> temperature <span class="sc">+</span> rainfall, data))</span></code></pre></div>
 <pre><code>## (Intercept) temperature    rainfall 
-## 0.007869996 0.538073739 0.319143688</code></pre>
+## -0.03117499  0.51738483  0.30049927</code></pre>
 <p>In the formula, we write out how the variables are added up. <em>Everything that you want exported needs to be defined and named</em> (e.g. <code>y=...</code>). By default they are all scaled by their beta values before this happens. Sometimes it is useful to prevent this (i.e. multiply two traits together without them being scaled by their respective beta) and we can do this by using <code>I()</code>.</p>
 <div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="1.8-modeleq.html#cb54-1" aria-hidden="true" tabindex="-1"></a>squid_data <span class="ot">&lt;-</span> <span class="fu">simulate_population</span>(</span>
 <span id="cb54-2"><a href="1.8-modeleq.html#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">parameters=</span><span class="fu">list</span>(</span>
@@ -284,7 +284,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb54-17"><a href="1.8-modeleq.html#cb54-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-18"><a href="1.8-modeleq.html#cb54-18" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(<span class="fu">lm</span>(y <span class="sc">~</span> temperature <span class="sc">+</span> rainfall, data))</span></code></pre></div>
 <pre><code>## (Intercept) temperature    rainfall 
-## -0.02838488  0.48523645  1.01715617</code></pre>
+## -0.01299137  0.50414545  1.04104296</code></pre>
 <p>We can also add extra parameters to the parameter list, which we can call from within the function. In combination with <code>I()</code> we can then customise the model formula a bit</p>
 <div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="1.8-modeleq.html#cb56-1" aria-hidden="true" tabindex="-1"></a>squid_data <span class="ot">&lt;-</span> <span class="fu">simulate_population</span>(</span>
 <span id="cb56-2"><a href="1.8-modeleq.html#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">parameters=</span><span class="fu">list</span>(</span>
@@ -306,7 +306,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb56-18"><a href="1.8-modeleq.html#cb56-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb56-19"><a href="1.8-modeleq.html#cb56-19" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(<span class="fu">lm</span>(y <span class="sc">~</span> temperature <span class="sc">+</span> rainfall, data))</span></code></pre></div>
 <pre><code>## (Intercept) temperature    rainfall 
-##  -0.0240410   0.4900905   0.1153231</code></pre>
+##   0.0363315   0.4914638   0.1121997</code></pre>
 <p>Finally, we can use <code>[]</code> to index the levels of the random effects within the formula…</p>
 </div>
             </section>
@@ -315,7 +315,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="1.7-nonGaussian.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="1.9-simulating-multiple-populations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="1.9-npop.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

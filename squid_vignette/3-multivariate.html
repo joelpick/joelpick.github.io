@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 Multi-response Models | The {squid} R Package Vignette</title>
+  <title>3 Multi-response Models | The {squidSim} R Package Vignette</title>
   <meta name="description" content="This is a vignette for using the squid R package." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 Multi-response Models | The {squid} R Package Vignette" />
+  <meta property="og:title" content="3 Multi-response Models | The {squidSim} R Package Vignette" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="squid-group/squid" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Multi-response Models | The {squid} R Package Vignette" />
+  <meta name="twitter:title" content="3 Multi-response Models | The {squidSim} R Package Vignette" />
   
   <meta name="twitter:description" content="This is a vignette for using the squid R package." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Pick" />
 
 
-<meta name="date" content="2022-01-13" />
+<meta name="date" content="2022-02-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="2.4-randomslopes.html"/>
 <link rel="next" href="3.1-one-response-repeatedly-measured-the-other-not.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -133,9 +133,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>The {squid} R package</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>The {squidSim} R package</a>
 <ul>
-<li class="chapter" data-level="0.0.1" data-path="index.html"><a href="index.html#why-use-squid"><i class="fa fa-check"></i><b>0.0.1</b> Why use squid?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#why-use-squidsim"><i class="fa fa-check"></i>Why use squidSim?</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#using-the-vignette"><i class="fa fa-check"></i>Using the vignette</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i>Installation</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#issues-and-bugs"><i class="fa fa-check"></i>Issues and bugs</a></li>
@@ -157,7 +157,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.6" data-path="1.6-known-predictors.html"><a href="1.6-known-predictors.html"><i class="fa fa-check"></i><b>1.6</b> Known Predictors</a></li>
 <li class="chapter" data-level="1.7" data-path="1.7-nonGaussian.html"><a href="1.7-nonGaussian.html"><i class="fa fa-check"></i><b>1.7</b> Non-Gaussian phenotypes</a></li>
 <li class="chapter" data-level="1.8" data-path="1.8-modeleq.html"><a href="1.8-modeleq.html"><i class="fa fa-check"></i><b>1.8</b> Model equations</a></li>
-<li class="chapter" data-level="1.9" data-path="1.9-simulating-multiple-populations.html"><a href="1.9-simulating-multiple-populations.html"><i class="fa fa-check"></i><b>1.9</b> Simulating multiple populations</a></li>
+<li class="chapter" data-level="1.9" data-path="1.9-npop.html"><a href="1.9-npop.html"><i class="fa fa-check"></i><b>1.9</b> Simulating multiple populations</a></li>
 <li class="chapter" data-level="1.10" data-path="1.10-parameter-list-summary.html"><a href="1.10-parameter-list-summary.html"><i class="fa fa-check"></i><b>1.10</b> Parameter list summary</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="2-hierarchical.html"><a href="2-hierarchical.html"><i class="fa fa-check"></i><b>2</b> Hierarchical structure</a>
@@ -228,7 +228,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The {squid} R Package Vignette</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The {squidSim} R Package Vignette</a>
           </h1>
         </div>
 
@@ -280,20 +280,20 @@ $$
 <span id="cb99-13"><a href="3-multivariate.html#cb99-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb99-14"><a href="3-multivariate.html#cb99-14" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_population_data</span>(squid_data)</span>
 <span id="cb99-15"><a href="3-multivariate.html#cb99-15" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
-<pre><code>##            y1         y2 individual_effect1 individual_effect2 residual_effect1
-## 1:  0.1854831 -0.2885988          0.3239738          0.3139093       -0.1384908
-## 2:  0.4368972  2.5188442          0.3239738          0.3139093        0.1129234
-## 3:  0.8836060  0.6366616          0.3239738          0.3139093        0.5596321
-## 4:  1.3461737  1.8143240          0.3239738          0.3139093        1.0221999
-## 5: -0.5706252  0.1163637          0.3239738          0.3139093       -0.8945991
-## 6:  0.1645213  0.1164854          0.3239738          0.3139093       -0.1594526
+<pre><code>##           y1       y2 individual_effect1 individual_effect2 residual_effect1
+## 1: 2.1791078 3.377012           1.267444           1.915837        0.9116635
+## 2: 2.0308859 2.058498           1.267444           1.915837        0.7634416
+## 3: 2.6711522 2.066508           1.267444           1.915837        1.4037078
+## 4: 0.6388385 0.938600           1.267444           1.915837       -0.6286059
+## 5: 0.9180473 1.199943           1.267444           1.915837       -0.3493970
+## 6: 1.3829370 2.060139           1.267444           1.915837        0.1154927
 ##    residual_effect2 individual squid_pop
-## 1:       -0.6025081          1         1
-## 2:        2.2049349          1         1
-## 3:        0.3227523          1         1
-## 4:        1.5004148          1         1
-## 5:       -0.1975456          1         1
-## 6:       -0.1974238          1         1</code></pre>
+## 1:        1.4611747          1         1
+## 2:        0.1426602          1         1
+## 3:        0.1506706          1         1
+## 4:       -0.9772374          1         1
+## 5:       -0.7158946          1         1
+## 6:        0.1443016          1         1</code></pre>
 <p>–&gt;</p>
 <!-- 
 https://stackoverflow.com/questions/63007496/how-to-create-an-editable-matrix-in-shiny-app
@@ -335,20 +335,20 @@ make little shiny app that allows you to enter diagonal and
 <span id="cb101-15"><a href="3-multivariate.html#cb101-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb101-16"><a href="3-multivariate.html#cb101-16" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_population_data</span>(squid_data)</span>
 <span id="cb101-17"><a href="3-multivariate.html#cb101-17" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
-<pre><code>##             y1          y2 individual_effect1 individual_effect2
-## 1: -1.90037788 -0.45305145           -1.66678         -0.8460919
-## 2: -1.13276046 -0.46637268           -1.66678         -0.8460919
-## 3: -0.09120979 -0.81569618           -1.66678         -0.8460919
-## 4: -1.29235510 -0.61635684           -1.66678         -0.8460919
-## 5: -0.36637469 -0.83954830           -1.66678         -0.8460919
-## 6: -3.49428769 -0.06965936           -1.66678         -0.8460919
-##    residual_effect1 residual_effect2 individual squid_pop
-## 1:       -0.2335974      0.393040442          1         1
-## 2:        0.5340200      0.379719211          1         1
-## 3:        1.5755707      0.030395711          1         1
-## 4:        0.3744254      0.229735051          1         1
-## 5:        1.3004058      0.006543597          1         1
-## 6:       -1.8275072      0.776432535          1         1</code></pre>
+<pre><code>##           y1          y2 individual_effect1 individual_effect2 residual_effect1
+## 1: 0.5341391  0.82291608           1.235471          0.7442862       -0.7013316
+## 2: 2.3783510  0.85097436           1.235471          0.7442862        1.1428803
+## 3: 2.1234617  2.56468115           1.235471          0.7442862        0.8879910
+## 4: 1.6881490  0.38643589           1.235471          0.7442862        0.4526784
+## 5: 0.1187558 -0.09066676           1.235471          0.7442862       -1.1167149
+## 6: 0.6156444 -1.41794329           1.235471          0.7442862       -0.6198263
+##    residual_effect2 individual squid_pop
+## 1:       0.07862983          1         1
+## 2:       0.10668811          1         1
+## 3:       1.82039490          1         1
+## 4:      -0.35785036          1         1
+## 5:      -0.83495301          1         1
+## 6:      -2.16222953          1         1</code></pre>
 <div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="3-multivariate.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(MCMCglmm)</span></span>
 <span id="cb103-2"><a href="3-multivariate.html#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="co"># mod &lt;- MCMCglmm(cbind(y1,y2)~1,random=~us(trait):individual, rcov=~us(trait):units,data=data,family=rep(&quot;gaussian&quot;,2),verbose=FALSE)</span></span>
 <span id="cb103-3"><a href="3-multivariate.html#cb103-3" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(mod)</span></span></code></pre></div>
@@ -382,20 +382,20 @@ make little shiny app that allows you to enter diagonal and
 <span id="cb106-17"><a href="3-multivariate.html#cb106-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb106-18"><a href="3-multivariate.html#cb106-18" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_population_data</span>(squid_data)</span>
 <span id="cb106-19"><a href="3-multivariate.html#cb106-19" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
-<pre><code>##             y1         y2 individual_effect1 individual_effect2 temperature
-## 1: -0.07722465  0.3982159          0.1285846          0.5215263  -0.7932645
-## 2: -0.69341548  1.0557319          0.1285846          0.5215263  -0.1531146
-## 3: -1.84774745 -2.1136274          0.1285846          0.5215263  -0.3044670
-## 4:  2.07516832  1.2282867          0.1285846          0.5215263   0.1257215
-## 5:  0.98116204  0.3903643          0.1285846          0.5215263  -0.4856915
-## 6:  0.23648018  0.4284261          0.1285846          0.5215263  -0.2089527
+<pre><code>##            y1          y2 individual_effect1 individual_effect2 temperature
+## 1: -1.1075131 -0.58785652         -0.5148209          0.3748109  -1.2679058
+## 2:  1.4928674  2.40005292         -0.5148209          0.3748109   0.4179419
+## 3:  0.2472825  0.03176847         -0.5148209          0.3748109  -0.6077977
+## 4: -1.2220839  0.17536373         -0.5148209          0.3748109   0.2005318
+## 5: -1.2255092 -1.10615980         -0.5148209          0.3748109   0.2609620
+## 6:  0.3043129 -0.31428382         -0.5148209          0.3748109  -1.6763525
 ##      rainfall       wind residual_effect1 residual_effect2 individual squid_pop
-## 1: -0.7323197 -0.9809287       0.46024071      0.353131344          1         1
-## 2:  2.0275256 -0.5267545      -0.84284438      0.009246284          1         1
-## 3: -2.0499870 -0.3083000      -1.55743983     -1.928434180          1         1
-## 4:  0.3723435  0.5834337       1.72980189      0.511569728          1         1
-## 5: -0.8989751  2.0883836       0.76764403      0.026830541          1         1
-## 6:  1.2921994  0.8710399      -0.09105597     -0.526073463          1         1</code></pre>
+## 1: -1.2486424  0.2162127        0.1228824       -0.3561148          1         1
+## 2:  1.2624090 -0.5532657        1.7831295        1.6182576          1         1
+## 3:  0.4284047 -0.8373845        1.1906387       -0.2662658          1         1
+## 4: -0.6543977  2.2506202       -1.1922132       -0.2682962          1         1
+## 5: -1.0862101  0.3189784       -0.7963440       -1.2391979          1         1
+## 6: -2.3502915 -1.1676843        2.1258760        0.4680317          1         1</code></pre>
 <div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="3-multivariate.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(MCMCglmm)</span></span>
 <span id="cb108-2"><a href="3-multivariate.html#cb108-2" aria-hidden="true" tabindex="-1"></a><span class="co"># mod &lt;- MCMCglmm(cbind(y1,y2)~1,random=~us(trait):individual, rcov=~us(trait):units,data=data,family=rep(&quot;gaussian&quot;,2),verbose=FALSE)</span></span>
 <span id="cb108-3"><a href="3-multivariate.html#cb108-3" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(mod)</span></span></code></pre></div>
@@ -423,27 +423,27 @@ make little shiny app that allows you to enter diagonal and
 <span id="cb109-22"><a href="3-multivariate.html#cb109-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb109-23"><a href="3-multivariate.html#cb109-23" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_population_data</span>(squid_data)</span>
 <span id="cb109-24"><a href="3-multivariate.html#cb109-24" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
-<pre><code>##            y1          y2 individual_effect1 individual_effect2 temperature
-## 1: -0.2060181 -1.42779107          0.2111468          0.6060413 -0.37537980
-## 2: -0.1994430  0.58290271          0.2111468          0.6060413 -1.25002050
-## 3: -0.2419550 -0.22191264          0.2111468          0.6060413 -0.72483779
-## 4: -1.7040123  1.35048308          0.2111468          0.6060413 -0.03281822
-## 5: -0.8055782  0.03200696          0.2111468          0.6060413  0.11992114
-## 6: -1.3544115  0.80422572          0.2111468          0.6060413 -1.56490046
-##       rainfall       wind temperature:rainfall residual_effect1
-## 1: -1.47931340  1.3446722          0.555304366      -0.40600851
-## 2: -0.51382119 -0.3202872          0.642287019       0.26563129
-## 3:  0.01212851 -0.7282067         -0.008791202       0.05462464
-## 4:  0.45219560 -0.6660121         -0.014840253      -1.80928316
-## 5:  0.19575645 -0.6845948          0.023475337      -0.96168977
-## 6: -1.17628834 -1.3051061          1.840774166      -0.58853539
+<pre><code>##             y1           y2 individual_effect1 individual_effect2 temperature
+## 1:  0.04367202  0.006774345         -0.6948651         -0.3747829  -0.3163814
+## 2:  0.06762783 -0.231354208         -0.6948651         -0.3747829   0.8060621
+## 3:  1.09215867 -0.656722790         -0.6948651         -0.3747829   1.4817262
+## 4:  1.05528269 -0.217181259         -0.6948651         -0.3747829   0.9137830
+## 5: -3.23933203  1.733407839         -0.6948651         -0.3747829  -2.3263583
+## 6: -0.97116152 -0.955296865         -0.6948651         -0.3747829   1.4511913
+##      rainfall        wind temperature:rainfall residual_effect1
+## 1:  0.2554959 -1.40578614          -0.08083416        1.1604189
+## 2: -0.4934689 -0.09297757          -0.39776663        0.4671809
+## 3: -1.4210176  0.08570312          -2.10555899        1.3816777
+## 4:  0.6487749 -0.87358662           0.59283942        1.3438122
+## 5:  1.3492588  0.69447545          -3.13885939       -1.3412228
+## 6: -1.5149440  0.61634150          -2.19847355       -0.7538186
 ##    residual_effect2 individual squid_pop
-## 1:       -1.4828383          1         1
-## 2:        0.6057267          1         1
-## 3:       -0.6164416          1         1
-## 4:        0.6774959          1         1
-## 5:       -0.5812434          1         1
-## 6:        1.5467939          1         1</code></pre>
+## 1:       0.48451308          1         1
+## 2:       0.02022469          1         1
+## 3:      -0.79221791          1         1
+## 4:       0.04542304          1         1
+## 5:       1.15757936          1         1
+## 6:      -1.13744528          1         1</code></pre>
 <div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="3-multivariate.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(MCMCglmm)</span></span>
 <span id="cb111-2"><a href="3-multivariate.html#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="co"># mod &lt;- MCMCglmm(cbind(y1,y2)~1,random=~us(trait):individual, rcov=~us(trait):units,data=data,family=rep(&quot;gaussian&quot;,2),verbose=FALSE)</span></span>
 <span id="cb111-3"><a href="3-multivariate.html#cb111-3" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(mod)</span></span></code></pre></div>

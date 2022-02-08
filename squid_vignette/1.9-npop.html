@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.6 Known Predictors | The {squidSim} R Package Vignette</title>
+  <title>1.9 Simulating multiple populations | The {squidSim} R Package Vignette</title>
   <meta name="description" content="This is a vignette for using the squid R package." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.6 Known Predictors | The {squidSim} R Package Vignette" />
+  <meta property="og:title" content="1.9 Simulating multiple populations | The {squidSim} R Package Vignette" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="squid-group/squid" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.6 Known Predictors | The {squidSim} R Package Vignette" />
+  <meta name="twitter:title" content="1.9 Simulating multiple populations | The {squidSim} R Package Vignette" />
   
   <meta name="twitter:description" content="This is a vignette for using the squid R package." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="1.5-transformations.html"/>
-<link rel="next" href="1.7-nonGaussian.html"/>
+<link rel="prev" href="1.8-modeleq.html"/>
+<link rel="next" href="1.10-parameter-list-summary.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -236,63 +236,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="known-predictors" class="section level2" number="1.6">
-<h2><span class="header-section-number">1.6</span> Known Predictors</h2>
-<p>We might have the situation where we don’t want to simulate a predictor, rather use existing data to simulate a response variable from. This has the advantage that any quirks of existing data (like a strange distribution) can be maintained. These predoctors can be fed into the <code>simulate_population</code> function, using the known_predictors argument. This argument takes a list, with one item, called predictors, a matrix or dataframe of predictors and one item called beta, with the beta values for the respective predictors. Importantly, the predictors have to be the same length as number of observations in the simulated data. We can demonstrate this using the blue tit data set that comes with the MCMCglmm package.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="1.6-known-predictors.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MCMCglmm)</span>
-<span id="cb42-2"><a href="1.6-known-predictors.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(BTdata)</span>
-<span id="cb42-3"><a href="1.6-known-predictors.html#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-4"><a href="1.6-known-predictors.html#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(BTdata)</span></code></pre></div>
-<pre><code>##        tarsus       back  animal     dam fosternest  hatchdate  sex
-## 1 -1.89229718  1.1464212 R187142 R187557      F2102 -0.6874021  Fem
-## 2  1.13610981 -0.7596521 R187154 R187559      F1902 -0.6874021 Male
-## 3  0.98468946  0.1449373 R187341 R187568       A602 -0.4279814 Male
-## 4  0.37900806  0.2555847 R046169 R187518      A1302 -1.4656641 Male
-## 5 -0.07525299 -0.3006992 R046161 R187528      A2602 -1.4656641  Fem
-## 6 -1.13519543  1.5577219 R187409 R187945      C2302  0.3502805  Fem</code></pre>
-<p>We can see that in this dataset there are several continuous predictors. Here we will use “hatchdate” and “tarsus”.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="1.6-known-predictors.html#cb44-1" aria-hidden="true" tabindex="-1"></a>squid_data <span class="ot">&lt;-</span> <span class="fu">simulate_population</span>(</span>
-<span id="cb44-2"><a href="1.6-known-predictors.html#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">parameters=</span><span class="fu">list</span>(</span>
-<span id="cb44-3"><a href="1.6-known-predictors.html#cb44-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">observation=</span><span class="fu">list</span>(</span>
-<span id="cb44-4"><a href="1.6-known-predictors.html#cb44-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">names=</span><span class="fu">c</span>(<span class="st">&quot;temperature&quot;</span>,<span class="st">&quot;rainfall&quot;</span>),</span>
-<span id="cb44-5"><a href="1.6-known-predictors.html#cb44-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">beta =</span> <span class="fu">c</span>(<span class="fl">0.5</span>,<span class="fl">0.3</span>)</span>
-<span id="cb44-6"><a href="1.6-known-predictors.html#cb44-6" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb44-7"><a href="1.6-known-predictors.html#cb44-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">residual=</span><span class="fu">list</span>(</span>
-<span id="cb44-8"><a href="1.6-known-predictors.html#cb44-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">vcov=</span><span class="fl">0.3</span></span>
-<span id="cb44-9"><a href="1.6-known-predictors.html#cb44-9" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb44-10"><a href="1.6-known-predictors.html#cb44-10" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb44-11"><a href="1.6-known-predictors.html#cb44-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">known_predictors =</span> <span class="fu">list</span>(</span>
-<span id="cb44-12"><a href="1.6-known-predictors.html#cb44-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">predictors =</span> BTdata[,<span class="fu">c</span>(<span class="st">&quot;hatchdate&quot;</span>,<span class="st">&quot;tarsus&quot;</span>)], </span>
-<span id="cb44-13"><a href="1.6-known-predictors.html#cb44-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">beta =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)),</span>
-<span id="cb44-14"><a href="1.6-known-predictors.html#cb44-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">N =</span> <span class="fu">nrow</span>(BTdata)</span>
-<span id="cb44-15"><a href="1.6-known-predictors.html#cb44-15" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb44-16"><a href="1.6-known-predictors.html#cb44-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-17"><a href="1.6-known-predictors.html#cb44-17" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_population_data</span>(squid_data)</span>
-<span id="cb44-18"><a href="1.6-known-predictors.html#cb44-18" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
-<pre><code>##             y temperature    rainfall residual_effect  hatchdate      tarsus
-## 1: -3.8947641   0.5204820  0.36696780       0.2069009 -0.6874021 -1.89229718
-## 2:  2.2741284   1.7799214  0.09771241      -0.2299636 -0.6874021  1.13610981
-## 3:  1.8459652   2.6362310 -0.26891380      -0.9328737 -0.4279814  0.98468946
-## 4: -0.4604693   1.2043972 -1.75195903       0.1705678 -1.4656641  0.37900806
-## 5: -1.6932511  -0.6229676  0.14487246       0.1909410 -1.4656641 -0.07525299
-## 6: -2.8273304  -0.3246487  0.03954678      -0.7567598  0.3502805 -1.13519543
-##    squid_pop
-## 1:         1
-## 2:         1
-## 3:         1
-## 4:         1
-## 5:         1
-## 6:         1</code></pre>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="1.6-known-predictors.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y<span class="sc">~</span>hatchdate,data)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<div id="npop" class="section level2" number="1.9">
+<h2><span class="header-section-number">1.9</span> Simulating multiple populations</h2>
+<p>We can use the <code>simulate_population()</code> function to generate multiple datasets (populations) form the same set of parameters (world). To do this we can specify the <code>N_pop</code> argument in <code>simulate_population()</code>. This defaults to 1.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="1.9-npop.html#cb58-1" aria-hidden="true" tabindex="-1"></a>squid_data <span class="ot">&lt;-</span> <span class="fu">simulate_population</span>(</span>
+<span id="cb58-2"><a href="1.9-npop.html#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">parameters =</span> <span class="fu">list</span>(</span>
+<span id="cb58-3"><a href="1.9-npop.html#cb58-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">individual =</span> <span class="fu">list</span>(</span>
+<span id="cb58-4"><a href="1.9-npop.html#cb58-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">vcov =</span> <span class="fl">0.5</span></span>
+<span id="cb58-5"><a href="1.9-npop.html#cb58-5" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb58-6"><a href="1.9-npop.html#cb58-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">residual =</span> <span class="fu">list</span>(</span>
+<span id="cb58-7"><a href="1.9-npop.html#cb58-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">vcov =</span> <span class="fl">0.5</span></span>
+<span id="cb58-8"><a href="1.9-npop.html#cb58-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb58-9"><a href="1.9-npop.html#cb58-9" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb58-10"><a href="1.9-npop.html#cb58-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">data_structure =</span> <span class="fu">make_structure</span>(<span class="at">structure =</span> <span class="st">&quot;sex(2)/individual(1000)&quot;</span>, <span class="at">N=</span><span class="dv">2000</span>),</span>
+<span id="cb58-11"><a href="1.9-npop.html#cb58-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">N_pop=</span><span class="dv">5</span></span>
+<span id="cb58-12"><a href="1.9-npop.html#cb58-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>By default <code>get_population_data</code> returns a data.table, where the <code>squid_pop</code> column indicates the population</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="1.9-npop.html#cb59-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_population_data</span>(squid_data)</span>
+<span id="cb59-2"><a href="1.9-npop.html#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<pre><code>##             y individual_effect residual_effect sex individual squid_pop
+## 1:  1.5748140        0.41303272       1.1617813   1          1         1
+## 2:  0.4118978       -0.16564095       0.5775388   1          2         1
+## 3:  1.3249120        0.63513505       0.6897770   1          3         1
+## 4: -0.7713207        0.07401247      -0.8453332   1          4         1
+## 5:  0.2621901        0.99124253      -0.7290524   1          5         1
+## 6:  1.2326740        0.59190351       0.6407705   1          6         1</code></pre>
+<p>It can also be output as a list, which might be more useful for processing many iterations of a simulation.</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="1.9-npop.html#cb61-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_population_data</span>(squid_data, <span class="at">list=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="1.5-transformations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="1.7-nonGaussian.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="1.8-modeleq.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="1.10-parameter-list-summary.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>7.1 Nested | The {squid} R Package Vignette</title>
+  <title>7.1 Nested | The {squidSim} R Package Vignette</title>
   <meta name="description" content="This is a vignette for using the squid R package." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7.1 Nested | The {squid} R Package Vignette" />
+  <meta property="og:title" content="7.1 Nested | The {squidSim} R Package Vignette" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="squid-group/squid" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7.1 Nested | The {squid} R Package Vignette" />
+  <meta name="twitter:title" content="7.1 Nested | The {squidSim} R Package Vignette" />
   
   <meta name="twitter:description" content="This is a vignette for using the squid R package." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Pick" />
 
 
-<meta name="date" content="2022-01-13" />
+<meta name="date" content="2022-02-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="7-sampling.html"/>
 <link rel="next" href="7.2-missing-data.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -133,9 +133,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>The {squid} R package</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>The {squidSim} R package</a>
 <ul>
-<li class="chapter" data-level="0.0.1" data-path="index.html"><a href="index.html#why-use-squid"><i class="fa fa-check"></i><b>0.0.1</b> Why use squid?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#why-use-squidsim"><i class="fa fa-check"></i>Why use squidSim?</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#using-the-vignette"><i class="fa fa-check"></i>Using the vignette</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i>Installation</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#issues-and-bugs"><i class="fa fa-check"></i>Issues and bugs</a></li>
@@ -157,7 +157,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.6" data-path="1.6-known-predictors.html"><a href="1.6-known-predictors.html"><i class="fa fa-check"></i><b>1.6</b> Known Predictors</a></li>
 <li class="chapter" data-level="1.7" data-path="1.7-nonGaussian.html"><a href="1.7-nonGaussian.html"><i class="fa fa-check"></i><b>1.7</b> Non-Gaussian phenotypes</a></li>
 <li class="chapter" data-level="1.8" data-path="1.8-modeleq.html"><a href="1.8-modeleq.html"><i class="fa fa-check"></i><b>1.8</b> Model equations</a></li>
-<li class="chapter" data-level="1.9" data-path="1.9-simulating-multiple-populations.html"><a href="1.9-simulating-multiple-populations.html"><i class="fa fa-check"></i><b>1.9</b> Simulating multiple populations</a></li>
+<li class="chapter" data-level="1.9" data-path="1.9-npop.html"><a href="1.9-npop.html"><i class="fa fa-check"></i><b>1.9</b> Simulating multiple populations</a></li>
 <li class="chapter" data-level="1.10" data-path="1.10-parameter-list-summary.html"><a href="1.10-parameter-list-summary.html"><i class="fa fa-check"></i><b>1.10</b> Parameter list summary</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="2-hierarchical.html"><a href="2-hierarchical.html"><i class="fa fa-check"></i><b>2</b> Hierarchical structure</a>
@@ -228,7 +228,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The {squid} R Package Vignette</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The {squidSim} R Package Vignette</a>
           </h1>
         </div>
 
@@ -239,7 +239,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="nested" class="section level2" number="7.1">
 <h2><span class="header-section-number">7.1</span> Nested</h2>
 <p>Nested sampling assumes that you have a nested structure, and allows you to sample different numbers at each hierarchical level. The <code>param</code> input is a matrix with (named) columns. The rows of this matrix represent different sampling sets. This is most easily put together using the <code>cbind()</code> (column bind) function, specifying the names. The number of repeat observations for a higher level can be specified using name ‘observation’ (this doesn’t have to exist in the data structure). For example</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="7.1-nested.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(<span class="at">individual=</span><span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>),<span class="at">observation=</span><span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="7.1-nested.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(<span class="at">individual=</span><span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>),<span class="at">observation=</span><span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span></code></pre></div>
 <pre><code>##      individual observation
 ## [1,]         10          10
 ## [2,]         15           5</code></pre>
@@ -248,38 +248,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="worked-example-1" class="section level3" number="7.1.1">
 <h3><span class="header-section-number">7.1.1</span> Worked example 1</h3>
 <p>We want to see how the number of repeat measurements on individuals affects power. In order to vary the number of observations of an individual, we could specify:</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="7.1-nested.html#cb154-1" aria-hidden="true" tabindex="-1"></a>param <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="at">nest=</span><span class="dv">10</span>,<span class="at">individual=</span><span class="dv">10</span>,<span class="at">observation=</span><span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">2</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="7.1-nested.html#cb155-1" aria-hidden="true" tabindex="-1"></a>sample_data <span class="ot">&lt;-</span> <span class="fu">sample_population</span>(pop_data, </span>
-<span id="cb155-2"><a href="7.1-nested.html#cb155-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;nested&quot;</span>, </span>
-<span id="cb155-3"><a href="7.1-nested.html#cb155-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">param =</span> param, </span>
-<span id="cb155-4"><a href="7.1-nested.html#cb155-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb155-5"><a href="7.1-nested.html#cb155-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb155-6"><a href="7.1-nested.html#cb155-6" aria-hidden="true" tabindex="-1"></a><span class="fu">get_sample_data</span>(sample_data, <span class="at">sample_set=</span><span class="dv">2</span>, <span class="at">list=</span><span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## [[1]]
-##                y individual_effect environment residual_effect nest individual
-##    1:  1.0776189         0.2640626   0.4046920       0.6112102    1          6
-##    2:  0.7797727         0.2640626   1.4133222      -0.1909510    1          6
-##    3: -0.9362748         0.2640626   0.5067232      -1.4536990    1          6
-##    4: -1.0459139         0.2640626  -1.1156093      -0.7521719    1          6
-##    5:  1.8669656         0.2640626   1.1954589       1.0051735    1          6
-##   ---                                                                         
-##  996: -0.9845959        -0.2309050  -0.7803824      -0.3634997   10        200
-##  997: -0.9251869        -0.2309050  -0.4327889      -0.4778875   10        200
-##  998: -0.1094476        -0.2309050  -0.8191679       0.5310413   10        200
-##  999:  0.5653681        -0.2309050   0.1862761       0.7031350   10        200
-## 1000: -1.9353851        -0.2309050  -0.5789413      -1.4150095   10        200
-##       squid_pop
-##    1:         1
-##    2:         1
-##    3:         1
-##    4:         1
-##    5:         1
-##   ---          
-##  996:         1
-##  997:         1
-##  998:         1
-##  999:         1
-## 1000:         1</code></pre>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="7.1-nested.html#cb153-1" aria-hidden="true" tabindex="-1"></a>param <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="at">nest=</span><span class="dv">10</span>,<span class="at">individual=</span><span class="dv">10</span>,<span class="at">observation=</span><span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="7.1-nested.html#cb154-1" aria-hidden="true" tabindex="-1"></a>pop_data <span class="ot">&lt;-</span> <span class="fu">simulate_population</span>(</span>
+<span id="cb154-2"><a href="7.1-nested.html#cb154-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data_structure =</span> <span class="fu">make_structure</span>(<span class="st">&quot;nest(10)/individual(20)&quot;</span>,<span class="at">repeat_obs=</span><span class="dv">20</span>),</span>
+<span id="cb154-3"><a href="7.1-nested.html#cb154-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-4"><a href="7.1-nested.html#cb154-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">parameters =</span> <span class="fu">list</span>(</span>
+<span id="cb154-5"><a href="7.1-nested.html#cb154-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">individual =</span> <span class="fu">list</span>( </span>
+<span id="cb154-6"><a href="7.1-nested.html#cb154-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">vcov =</span> <span class="fl">0.1</span></span>
+<span id="cb154-7"><a href="7.1-nested.html#cb154-7" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb154-8"><a href="7.1-nested.html#cb154-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">observation=</span> <span class="fu">list</span>(</span>
+<span id="cb154-9"><a href="7.1-nested.html#cb154-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">names =</span> <span class="fu">c</span>(<span class="st">&quot;environment&quot;</span>),</span>
+<span id="cb154-10"><a href="7.1-nested.html#cb154-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">beta =</span><span class="fu">c</span>(<span class="fl">0.5</span>)</span>
+<span id="cb154-11"><a href="7.1-nested.html#cb154-11" aria-hidden="true" tabindex="-1"></a>    ), </span>
+<span id="cb154-12"><a href="7.1-nested.html#cb154-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">residual =</span> <span class="fu">list</span>(</span>
+<span id="cb154-13"><a href="7.1-nested.html#cb154-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">vcov =</span> <span class="fl">0.8</span></span>
+<span id="cb154-14"><a href="7.1-nested.html#cb154-14" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb154-15"><a href="7.1-nested.html#cb154-15" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb154-16"><a href="7.1-nested.html#cb154-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-17"><a href="7.1-nested.html#cb154-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">sample_type =</span> <span class="st">&quot;nested&quot;</span>, </span>
+<span id="cb154-18"><a href="7.1-nested.html#cb154-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">sample_param =</span> param</span>
+<span id="cb154-19"><a href="7.1-nested.html#cb154-19" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>To extract the sampled data we can then use <code>get_sample_data()</code> specifying which sample set we want, for example the second set 10 nests, each with 10 individuals with 10 observations:</p>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="7.1-nested.html#cb155-1" aria-hidden="true" tabindex="-1"></a>sample_data <span class="ot">&lt;-</span> <span class="fu">get_sample_data</span>(pop_data, <span class="at">sample_set=</span><span class="dv">2</span>)</span>
+<span id="cb155-2"><a href="7.1-nested.html#cb155-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(sample_data<span class="sc">$</span>nest))</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="7.1-nested.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(sample_data<span class="sc">$</span>individual))</span></code></pre></div>
+<pre><code>## [1] 100</code></pre>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="7.1-nested.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(sample_data)</span></code></pre></div>
+<pre><code>## [1] 1000</code></pre>
 </div>
 </div>
             </section>

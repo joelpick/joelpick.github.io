@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.9 Simulating multiple populations | The {squid} R Package Vignette</title>
+  <title>1.9 Simulating multiple populations | The {squidSim} R Package Vignette</title>
   <meta name="description" content="This is a vignette for using the squid R package." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.9 Simulating multiple populations | The {squid} R Package Vignette" />
+  <meta property="og:title" content="1.9 Simulating multiple populations | The {squidSim} R Package Vignette" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="squid-group/squid" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.9 Simulating multiple populations | The {squid} R Package Vignette" />
+  <meta name="twitter:title" content="1.9 Simulating multiple populations | The {squidSim} R Package Vignette" />
   
   <meta name="twitter:description" content="This is a vignette for using the squid R package." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Pick" />
 
 
-<meta name="date" content="2022-01-13" />
+<meta name="date" content="2022-02-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="1.8-modeleq.html"/>
 <link rel="next" href="1.10-parameter-list-summary.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -133,9 +133,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>The {squid} R package</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>The {squidSim} R package</a>
 <ul>
-<li class="chapter" data-level="0.0.1" data-path="index.html"><a href="index.html#why-use-squid"><i class="fa fa-check"></i><b>0.0.1</b> Why use squid?</a></li>
+<li class="chapter" data-level="0.0.1" data-path="index.html"><a href="index.html#why-use-squidsim"><i class="fa fa-check"></i><b>0.0.1</b> Why use squidSim?</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#using-the-vignette"><i class="fa fa-check"></i>Using the vignette</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i>Installation</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#issues-and-bugs"><i class="fa fa-check"></i>Issues and bugs</a></li>
@@ -228,7 +228,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The {squid} R Package Vignette</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The {squidSim} R Package Vignette</a>
           </h1>
         </div>
 
@@ -255,12 +255,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="1.9-simulating-multiple-populations.html#cb59-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_population_data</span>(squid_data)</span>
 <span id="cb59-2"><a href="1.9-simulating-multiple-populations.html#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
 <pre><code>##             y individual_effect residual_effect sex individual squid_pop
-## 1:  1.6999824         0.1645134      1.53546898   1          1         1
-## 2: -2.1687022        -0.9701923     -1.19850993   1          2         1
-## 3: -0.3631091         0.2883620     -0.65147113   1          3         1
-## 4:  1.1956109         0.7550350      0.44057590   1          4         1
-## 5:  0.6634747         0.4705878      0.19288690   1          5         1
-## 6: -0.6781073        -0.6984080      0.02030068   1          6         1</code></pre>
+## 1:  2.4041846        1.35747171       1.0467129   1          1         1
+## 2: -0.5913259       -0.09899613      -0.4923298   1          2         1
+## 3:  0.7702864        0.29158238       0.4787040   1          3         1
+## 4: -1.7796133       -0.58245617      -1.1971571   1          4         1
+## 5: -0.7041905       -0.12212705      -0.5820635   1          5         1
+## 6:  1.0383752        1.18264974      -0.1442746   1          6         1</code></pre>
 <p>It can also be output as a list, which might be more useful for processing many iterations of a simulation.</p>
 <div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="1.9-simulating-multiple-populations.html#cb61-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_population_data</span>(squid_data, <span class="at">list=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 </div>

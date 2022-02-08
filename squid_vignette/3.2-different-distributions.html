@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3.2 Different distributions | The {squid} R Package Vignette</title>
+  <title>3.2 Different distributions | The {squidSim} R Package Vignette</title>
   <meta name="description" content="This is a vignette for using the squid R package." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3.2 Different distributions | The {squid} R Package Vignette" />
+  <meta property="og:title" content="3.2 Different distributions | The {squidSim} R Package Vignette" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="squid-group/squid" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3.2 Different distributions | The {squid} R Package Vignette" />
+  <meta name="twitter:title" content="3.2 Different distributions | The {squidSim} R Package Vignette" />
   
   <meta name="twitter:description" content="This is a vignette for using the squid R package." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Pick" />
 
 
-<meta name="date" content="2022-01-13" />
+<meta name="date" content="2022-02-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="3.1-one-response-repeatedly-measured-the-other-not.html"/>
 <link rel="next" href="3.3-multivariate-random-slopes.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -133,9 +133,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>The {squid} R package</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>The {squidSim} R package</a>
 <ul>
-<li class="chapter" data-level="0.0.1" data-path="index.html"><a href="index.html#why-use-squid"><i class="fa fa-check"></i><b>0.0.1</b> Why use squid?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#why-use-squidsim"><i class="fa fa-check"></i>Why use squidSim?</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#using-the-vignette"><i class="fa fa-check"></i>Using the vignette</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i>Installation</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#issues-and-bugs"><i class="fa fa-check"></i>Issues and bugs</a></li>
@@ -157,7 +157,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.6" data-path="1.6-known-predictors.html"><a href="1.6-known-predictors.html"><i class="fa fa-check"></i><b>1.6</b> Known Predictors</a></li>
 <li class="chapter" data-level="1.7" data-path="1.7-nonGaussian.html"><a href="1.7-nonGaussian.html"><i class="fa fa-check"></i><b>1.7</b> Non-Gaussian phenotypes</a></li>
 <li class="chapter" data-level="1.8" data-path="1.8-modeleq.html"><a href="1.8-modeleq.html"><i class="fa fa-check"></i><b>1.8</b> Model equations</a></li>
-<li class="chapter" data-level="1.9" data-path="1.9-simulating-multiple-populations.html"><a href="1.9-simulating-multiple-populations.html"><i class="fa fa-check"></i><b>1.9</b> Simulating multiple populations</a></li>
+<li class="chapter" data-level="1.9" data-path="1.9-npop.html"><a href="1.9-npop.html"><i class="fa fa-check"></i><b>1.9</b> Simulating multiple populations</a></li>
 <li class="chapter" data-level="1.10" data-path="1.10-parameter-list-summary.html"><a href="1.10-parameter-list-summary.html"><i class="fa fa-check"></i><b>1.10</b> Parameter list summary</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="2-hierarchical.html"><a href="2-hierarchical.html"><i class="fa fa-check"></i><b>2</b> Hierarchical structure</a>
@@ -228,7 +228,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The {squid} R Package Vignette</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The {squidSim} R Package Vignette</a>
           </h1>
         </div>
 
@@ -267,47 +267,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb113-27"><a href="3.2-different-distributions.html#cb113-27" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_population_data</span>(squid_data)</span>
 <span id="cb113-28"><a href="3.2-different-distributions.html#cb113-28" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data,<span class="dv">20</span>)</span></code></pre></div>
 <pre><code>##              y1 y2 individual_effect1 individual_effect2 residual_effect1
-##  1: -0.63211336  0         -0.4353468          -1.208276     -0.196766529
-##  2: -0.95715826  0         -0.4353468          -1.208276     -0.521811433
-##  3:  0.32722959  1         -0.4353468          -1.208276      0.762576416
-##  4:  0.65756906  0         -0.4353468          -1.208276      1.092915889
-##  5: -0.02128991  0         -0.4353468          -1.208276      0.414056913
-##  6:  0.68656672  0         -0.4353468          -1.208276      1.121913549
-##  7: -0.74273788  1         -0.4353468          -1.208276     -0.307391054
-##  8:  0.62328771  0         -0.4353468          -1.208276      1.058634541
-##  9: -0.87111171  0         -0.4353468          -1.208276     -0.435764881
-## 10: -0.06471047  0         -0.4353468          -1.208276      0.370636355
-## 11:  0.14702046  0         -0.4353468          -1.208276      0.582367288
-## 12: -0.63647991  0         -0.4353468          -1.208276     -0.201133086
-## 13: -2.41333398  0         -0.4353468          -1.208276     -1.977987151
-## 14: -2.02498824  0         -0.4353468          -1.208276     -1.589641416
-## 15: -0.18775345  0         -0.4353468          -1.208276      0.247593374
-## 16: -3.11192181  0         -0.4353468          -1.208276     -2.676574984
-## 17: -1.55609473  1         -0.4353468          -1.208276     -1.120747906
-## 18: -0.41482584  0         -0.4353468          -1.208276      0.020520988
-## 19: -0.43841794  0         -0.4353468          -1.208276     -0.003071109
-## 20: -0.83553381  0         -0.4353468          -1.208276     -0.400186988
+##  1: -0.58721929  1           1.247427          0.5312474      -1.83464616
+##  2:  1.17886161  1           1.247427          0.5312474      -0.06856526
+##  3:  0.41435604  0           1.247427          0.5312474      -0.83307083
+##  4:  2.40779159  1           1.247427          0.5312474       1.16036472
+##  5:  2.22466300  1           1.247427          0.5312474       0.97723613
+##  6: -0.08250208  1           1.247427          0.5312474      -1.32992895
+##  7:  0.34700858  0           1.247427          0.5312474      -0.90041829
+##  8:  2.05115547  1           1.247427          0.5312474       0.80372860
+##  9: -0.21255024  0           1.247427          0.5312474      -1.45997711
+## 10:  1.08646706  1           1.247427          0.5312474      -0.16095981
+## 11:  1.70506541  1           1.247427          0.5312474       0.45763855
+## 12:  0.36203942  1           1.247427          0.5312474      -0.88538745
+## 13:  3.24744845  0           1.247427          0.5312474       2.00002158
+## 14:  1.72966810  1           1.247427          0.5312474       0.48224124
+## 15:  2.29982959  0           1.247427          0.5312474       1.05240272
+## 16: -0.83303838  1           1.247427          0.5312474      -2.08046525
+## 17:  0.96135453  0           1.247427          0.5312474      -0.28607234
+## 18: -1.34022696  0           1.247427          0.5312474      -2.58765383
+## 19:  0.73817067  0           1.247427          0.5312474      -0.50925620
+## 20:  1.53768488  1           1.247427          0.5312474       0.29025801
 ##     residual_effect2 individual squid_pop
-##  1:      -0.88582435          1         1
-##  2:      -0.33915318          1         1
-##  3:       1.58312704          1         1
-##  4:       1.17592794          1         1
-##  5:      -0.39495458          1         1
-##  6:       2.06037423          1         1
-##  7:       0.90703558          1         1
-##  8:       0.41942327          1         1
-##  9:      -0.02249304          1         1
-## 10:      -1.64690884          1         1
-## 11:       1.52819160          1         1
-## 12:      -1.12329882          1         1
-## 13:      -0.69006092          1         1
-## 14:      -1.05423713          1         1
-## 15:       0.20076660          1         1
-## 16:      -1.23161899          1         1
-## 17:      -1.30462100          1         1
-## 18:       0.67126589          1         1
-## 19:       0.57539066          1         1
-## 20:       0.10983942          1         1</code></pre>
+##  1:        0.1699124          1         1
+##  2:       -1.1579362          1         1
+##  3:       -0.1358165          1         1
+##  4:        1.0604907          1         1
+##  5:        1.6696873          1         1
+##  6:       -0.5419707          1         1
+##  7:       -0.5719374          1         1
+##  8:       -0.4078652          1         1
+##  9:       -1.3617572          1         1
+## 10:       -2.0215548          1         1
+## 11:        0.3852501          1         1
+## 12:       -0.5880273          1         1
+## 13:        1.9980537          1         1
+## 14:        2.0038769          1         1
+## 15:       -0.2637844          1         1
+## 16:       -0.8932288          1         1
+## 17:       -1.2442459          1         1
+## 18:       -3.4791464          1         1
+## 19:        1.2214492          1         1
+## 20:        1.3685696          1         1</code></pre>
 <div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="3.2-different-distributions.html#cb115-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_population_data</span>(squid_data)</span></code></pre></div>
 </div>
             </section>

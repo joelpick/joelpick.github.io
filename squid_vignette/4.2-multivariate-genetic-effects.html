@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.2 Multivariate genetic effects | The {squid} R Package Vignette</title>
+  <title>4.2 Multivariate genetic effects | The {squidSim} R Package Vignette</title>
   <meta name="description" content="This is a vignette for using the squid R package." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.2 Multivariate genetic effects | The {squid} R Package Vignette" />
+  <meta property="og:title" content="4.2 Multivariate genetic effects | The {squidSim} R Package Vignette" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="squid-group/squid" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.2 Multivariate genetic effects | The {squid} R Package Vignette" />
+  <meta name="twitter:title" content="4.2 Multivariate genetic effects | The {squidSim} R Package Vignette" />
   
   <meta name="twitter:description" content="This is a vignette for using the squid R package." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Pick" />
 
 
-<meta name="date" content="2022-01-13" />
+<meta name="date" content="2022-02-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="4.1-va.html"/>
 <link rel="next" href="4.3-sex-specific-genetic-variance-and-inter-sexual-genetic-correlations.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -133,9 +133,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>The {squid} R package</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>The {squidSim} R package</a>
 <ul>
-<li class="chapter" data-level="0.0.1" data-path="index.html"><a href="index.html#why-use-squid"><i class="fa fa-check"></i><b>0.0.1</b> Why use squid?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#why-use-squidsim"><i class="fa fa-check"></i>Why use squidSim?</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#using-the-vignette"><i class="fa fa-check"></i>Using the vignette</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i>Installation</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#issues-and-bugs"><i class="fa fa-check"></i>Issues and bugs</a></li>
@@ -157,7 +157,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.6" data-path="1.6-known-predictors.html"><a href="1.6-known-predictors.html"><i class="fa fa-check"></i><b>1.6</b> Known Predictors</a></li>
 <li class="chapter" data-level="1.7" data-path="1.7-nonGaussian.html"><a href="1.7-nonGaussian.html"><i class="fa fa-check"></i><b>1.7</b> Non-Gaussian phenotypes</a></li>
 <li class="chapter" data-level="1.8" data-path="1.8-modeleq.html"><a href="1.8-modeleq.html"><i class="fa fa-check"></i><b>1.8</b> Model equations</a></li>
-<li class="chapter" data-level="1.9" data-path="1.9-simulating-multiple-populations.html"><a href="1.9-simulating-multiple-populations.html"><i class="fa fa-check"></i><b>1.9</b> Simulating multiple populations</a></li>
+<li class="chapter" data-level="1.9" data-path="1.9-npop.html"><a href="1.9-npop.html"><i class="fa fa-check"></i><b>1.9</b> Simulating multiple populations</a></li>
 <li class="chapter" data-level="1.10" data-path="1.10-parameter-list-summary.html"><a href="1.10-parameter-list-summary.html"><i class="fa fa-check"></i><b>1.10</b> Parameter list summary</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="2-hierarchical.html"><a href="2-hierarchical.html"><i class="fa fa-check"></i><b>2</b> Hierarchical structure</a>
@@ -228,7 +228,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The {squid} R Package Vignette</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The {squidSim} R Package Vignette</a>
           </h1>
         </div>
 
@@ -256,13 +256,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb127-15"><a href="4.2-multivariate-genetic-effects.html#cb127-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb127-16"><a href="4.2-multivariate-genetic-effects.html#cb127-16" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_population_data</span>(squid_data)</span>
 <span id="cb127-17"><a href="4.2-multivariate-genetic-effects.html#cb127-17" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
-<pre><code>##            y1         y2 animal_effect1 animal_effect2 residual_effect1 residual_effect2  animal  dam sire squid_pop
-## 1:  1.5815582  1.1218678    -0.18142887    -0.16858270        1.7629871        1.2904505 R187557 &lt;NA&gt; &lt;NA&gt;         1
-## 2: -1.3247072 -0.4271741    -0.45177456     1.17334945       -0.8729326       -1.6005236 R187559 &lt;NA&gt; &lt;NA&gt;         1
-## 3:  2.9428209 -0.3784620     2.22926544     0.08258474        0.7135554       -0.4610467 R187568 &lt;NA&gt; &lt;NA&gt;         1
-## 4: -1.0504125  1.6996658     0.22460123     0.77784315       -1.2750137        0.9218227 R187518 &lt;NA&gt; &lt;NA&gt;         1
-## 5: -0.7146031 -0.3134457    -0.14806039    -1.24572423       -0.5665427        0.9322785 R187528 &lt;NA&gt; &lt;NA&gt;         1
-## 6: -0.4513307 -0.7553913    -0.05585892    -0.49817275       -0.3954718       -0.2572186 R187945 &lt;NA&gt; &lt;NA&gt;         1</code></pre>
+<pre><code>##            y1         y2 animal_effect1 animal_effect2 residual_effect1
+## 1:  1.1865233 -1.3624038      0.1978343     -1.0575881        0.9886890
+## 2: -0.6337098 -0.7496819     -0.8771544     -0.2782545        0.2434446
+## 3: -1.7225585 -0.1232221     -1.0073594     -0.8121222       -0.7151991
+## 4: -0.9160525 -0.9158656      0.5124476      0.2332408       -1.4285001
+## 5:  2.3824077 -0.9937048      1.4750506     -0.1260002        0.9073571
+## 6:  1.4276448  2.0279590      0.8942136      0.3476667        0.5334313
+##    residual_effect2  animal  dam sire squid_pop
+## 1:       -0.3048157 R187557 &lt;NA&gt; &lt;NA&gt;         1
+## 2:       -0.4714274 R187559 &lt;NA&gt; &lt;NA&gt;         1
+## 3:        0.6889001 R187568 &lt;NA&gt; &lt;NA&gt;         1
+## 4:       -1.1491064 R187518 &lt;NA&gt; &lt;NA&gt;         1
+## 5:       -0.8677046 R187528 &lt;NA&gt; &lt;NA&gt;         1
+## 6:        1.6802923 R187945 &lt;NA&gt; &lt;NA&gt;         1</code></pre>
 <div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="4.2-multivariate-genetic-effects.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ainv&lt;-inverseA(BTped)$Ainv</span></span>
 <span id="cb129-2"><a href="4.2-multivariate-genetic-effects.html#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="co"># mod &lt;- MCMCglmm(cbind(y1,y2)~1,random=~us(trait):animal, rcov=~us(trait):units,data=data,family=rep(&quot;gaussian&quot;,2),verbose=FALSE,ginverse=list(animal=Ainv))</span></span>
 <span id="cb129-3"><a href="4.2-multivariate-genetic-effects.html#cb129-3" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(mod)</span></span></code></pre></div>

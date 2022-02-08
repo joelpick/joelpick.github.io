@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.5 Transformations | The {squid} R Package Vignette</title>
+  <title>1.5 Transformations | The {squidSim} R Package Vignette</title>
   <meta name="description" content="This is a vignette for using the squid R package." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.5 Transformations | The {squid} R Package Vignette" />
+  <meta property="og:title" content="1.5 Transformations | The {squidSim} R Package Vignette" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="squid-group/squid" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.5 Transformations | The {squid} R Package Vignette" />
+  <meta name="twitter:title" content="1.5 Transformations | The {squidSim} R Package Vignette" />
   
   <meta name="twitter:description" content="This is a vignette for using the squid R package." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Pick" />
 
 
-<meta name="date" content="2022-01-13" />
+<meta name="date" content="2022-02-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="1.4-interactions-and-non-linear-effects.html"/>
 <link rel="next" href="1.6-known-predictors.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -133,9 +133,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>The {squid} R package</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>The {squidSim} R package</a>
 <ul>
-<li class="chapter" data-level="0.0.1" data-path="index.html"><a href="index.html#why-use-squid"><i class="fa fa-check"></i><b>0.0.1</b> Why use squid?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#why-use-squidsim"><i class="fa fa-check"></i>Why use squidSim?</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#using-the-vignette"><i class="fa fa-check"></i>Using the vignette</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i>Installation</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#issues-and-bugs"><i class="fa fa-check"></i>Issues and bugs</a></li>
@@ -157,7 +157,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.6" data-path="1.6-known-predictors.html"><a href="1.6-known-predictors.html"><i class="fa fa-check"></i><b>1.6</b> Known Predictors</a></li>
 <li class="chapter" data-level="1.7" data-path="1.7-nonGaussian.html"><a href="1.7-nonGaussian.html"><i class="fa fa-check"></i><b>1.7</b> Non-Gaussian phenotypes</a></li>
 <li class="chapter" data-level="1.8" data-path="1.8-modeleq.html"><a href="1.8-modeleq.html"><i class="fa fa-check"></i><b>1.8</b> Model equations</a></li>
-<li class="chapter" data-level="1.9" data-path="1.9-simulating-multiple-populations.html"><a href="1.9-simulating-multiple-populations.html"><i class="fa fa-check"></i><b>1.9</b> Simulating multiple populations</a></li>
+<li class="chapter" data-level="1.9" data-path="1.9-npop.html"><a href="1.9-npop.html"><i class="fa fa-check"></i><b>1.9</b> Simulating multiple populations</a></li>
 <li class="chapter" data-level="1.10" data-path="1.10-parameter-list-summary.html"><a href="1.10-parameter-list-summary.html"><i class="fa fa-check"></i><b>1.10</b> Parameter list summary</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="2-hierarchical.html"><a href="2-hierarchical.html"><i class="fa fa-check"></i><b>2</b> Hierarchical structure</a>
@@ -228,7 +228,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The {squid} R Package Vignette</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The {squidSim} R Package Vignette</a>
           </h1>
         </div>
 
@@ -255,13 +255,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb35-14"><a href="1.5-transformations.html#cb35-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-15"><a href="1.5-transformations.html#cb35-15" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_population_data</span>(squid_data)</span>
 <span id="cb35-16"><a href="1.5-transformations.html#cb35-16" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
-<pre><code>##            y temperature   rainfall residual_effect squid_pop
-## 1: 0.9281886  -0.9596354  0.7129879      1.19410993         1
-## 2: 0.1919177   0.5384998  0.3230046     -0.17423358         1
-## 3: 0.5019098  -0.3127282  0.4214194      0.53184800         1
-## 4: 0.5190235   0.6464308  1.1195467     -0.14005589         1
-## 5: 0.6953651   1.2230906  3.5698751     -0.98714273         1
-## 6: 3.6750533  -1.4051060 14.6527819     -0.01822829         1</code></pre>
+<pre><code>##              y temperature  rainfall residual_effect squid_pop
+## 1:  0.25303642   0.3194564 2.8914783      -0.7741352         1
+## 2:  0.07182133  -1.2119216 1.4274460       0.2495483         1
+## 3:  0.28938682   0.2917695 0.9670624      -0.1466166         1
+## 4: -0.12618403  -0.1939646 0.4571713      -0.1663531         1
+## 5: -0.24803757  -0.3708652 1.7820173      -0.5972102         1
+## 6: -0.80662137  -1.3157503 0.1939773      -0.2069394         1</code></pre>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="1.5-transformations.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(data<span class="sc">$</span>rainfall, <span class="at">breaks=</span><span class="dv">100</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>If a covariance between variables is specified, this covariance is on the untransformed (Gaussian) scale (as the variables are simulated as multivariate normal), NOT on the transformed scale, so care should be taken with this. For example:</p>
@@ -283,9 +283,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb38-16"><a href="1.5-transformations.html#cb38-16" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_population_data</span>(squid_data)</span>
 <span id="cb38-17"><a href="1.5-transformations.html#cb38-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb38-18"><a href="1.5-transformations.html#cb38-18" aria-hidden="true" tabindex="-1"></a><span class="fu">cov</span>(data<span class="sc">$</span>temperature,data<span class="sc">$</span>rainfall)</span></code></pre></div>
-<pre><code>## [1] 1.28438</code></pre>
+<pre><code>## [1] 1.096314</code></pre>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="1.5-transformations.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cov</span>(data<span class="sc">$</span>temperature,<span class="fu">log</span>(data<span class="sc">$</span>rainfall))</span></code></pre></div>
-<pre><code>## [1] 0.6978127</code></pre>
+<pre><code>## [1] 0.6714665</code></pre>
 <p>The simulate covariance can be recovered on the backtransformed predictor.</p>
 </div>
             </section>

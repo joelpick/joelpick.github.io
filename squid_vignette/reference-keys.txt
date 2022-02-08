@@ -1,4 +1,3 @@
-why-use-squid
 linearmod
 simulate_population-function
 simple-linear-model
@@ -11,7 +10,7 @@ transformations
 known-predictors
 nonGaussian
 modeleq
-simulating-multiple-populations
+npop
 parameter-list-summary
 hierarchical
 makestr
