@@ -13,6 +13,7 @@ George Bernard Shaw
 <br />
 
 PEER REVIEWED PUBLICATIONS:
+* **Pick JL**, Lemon H, Thomson C, & Hadfield JD (2021) Decomposing phenotypic skew and its effects on the predicted response to strong selection. *Nature Ecology and Evolution*, In Press, doi:10.32942/osf.io/n4g5z.
 
 * Gauzere J, Walling CA, **Pick JL**, Watt K, Jack P, Morris A, Morris S, & Pemberton, JM. (2021) The role of maternally transferred antibodies in maternal performance in red deer. *Ecology Letters*, 
 
@@ -50,8 +51,6 @@ PEER REVIEWED PUBLICATIONS:
 
 
 PRE-PRINTS
-
-* **Pick JL**, Lemon H, Thomson C, & Hadfield JD (2021) Decomposing phenotypic skew and its effects on the predicted response to strong selection. *EcoEvoRxiv*, doi:10.32942/osf.io/n4g5z.  *In Review at Nature Ecology and Evolution*
 
 * **Pick JL**, Khwaja N, Spence MA, Ihle M & Nakagawa S (2019) Counter culture: Causes, extent and solutions of systematic bias in the analysis of behavioural counts. *EcoEvoRxiv*, doi:10.32942/osf.io/jq9n6.
 
