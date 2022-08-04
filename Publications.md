@@ -12,10 +12,31 @@ George Bernard Shaw
 
 <br />
 
-PEER REVIEWED PUBLICATIONS:
-* **Pick JL**, Lemon H, Thomson C, & Hadfield JD (2021) Decomposing phenotypic skew and its effects on the predicted response to strong selection. *Nature Ecology and Evolution*, In Press, doi:10.32942/osf.io/n4g5z.
 
-* Gauzere J, Walling CA, **Pick JL**, Watt K, Jack P, Morris A, Morris S, & Pemberton, JM. (2021) The role of maternally transferred antibodies in maternal performance in red deer. *Ecology Letters*, 
+IN PREPARATION:
+
+* **Pick JL**, Senior A, & Nakagawa S. The impact of environmental amelioration on the plasticity of reproductive traits: a meta-analysis.
+
+* **Pick JL**, Spence M, Ihle M, Schroeder J, Burke T, & Nakagawa S. Decomposing parental provisioning behaviour to understand the causes, constraints and costs of parental care. 
+
+* **Pick JL**, Kasper C, Dochtermann N, Westneat D, Wright J & Araya-Ajoy YG. Describing posterior distributions of variance components: Problems and using null distributions to aid interpretation.
+
+* Moatt JP, Vale PF, McNeil PL, Hudson AL, Savola E, **Pick JL** & Walling CA. Testing the evolutionary basis of dietary restriction.
+
+
+
+PRE-PRINTS
+
+* Macphie, KH, Samplonius JM, **Pick JL**, Hadfield JD & Phillimore AB (2022). Warmer Springs Lead to Earlier and Higher Peaks of Arboreal Caterpillars. *EcoEvoRxiv*. doi:10.32942/osf.io/fh3xv.
+
+* **Pick JL**, Khwaja N, Spence MA, Ihle M & Nakagawa S (2019) Counter culture: Causes, extent and solutions of systematic bias in the analysis of behavioural counts. *EcoEvoRxiv*, doi:10.32942/osf.io/jq9n6.
+
+
+
+PEER REVIEWED PUBLICATIONS:
+* **Pick JL**, Lemon H, Thomson C, & Hadfield JD (2021) Decomposing phenotypic skew and its effects on the predicted response to strong selection. *Nature Ecology and Evolution*, 6, 774-785. doi:10.1038/s41559-022-01694-2
+
+* Gauzere J, Walling CA, **Pick JL**, Watt K, Jack P, Morris A, Morris S, & Pemberton, JM. (2021) The role of maternally transferred antibodies in maternal performance in red deer. *Ecology Letters*, 24, 2065-2076. doi: 10.1111/ele.13834.
 
 * **Pick JL**, Hatakeyama M, Ihle KE, Gasparini J, Haussy C, Ishishita S, ... & Tschirren B (2020) Artificial selection reveals the role of transcriptional constraints in the maintenance of life history variation. *Evolution Letters*, 4, 200–211. doi: 10.1002/evl3.166
 
@@ -50,14 +71,4 @@ PEER REVIEWED PUBLICATIONS:
 * Giordano M, Costantini D, **Pick JL** & Tschirren B (2015) Female oxidative status, egg antioxidant protection and eggshell pigmentation: a supplemental feeding experiment in great tits. *Behavioural Ecology and Sociobiology*, 69, 777-785. doi:10.1007/s00265-015-1893-1
 
 
-PRE-PRINTS
-
-* **Pick JL**, Khwaja N, Spence MA, Ihle M & Nakagawa S (2019) Counter culture: Causes, extent and solutions of systematic bias in the analysis of behavioural counts. *EcoEvoRxiv*, doi:10.32942/osf.io/jq9n6.
-
-
-IN PREPARATION:
-
-* **Pick JL**, Spence M, Ihle M, Schroeder J, Burke T, & Nakagawa S. Decomposing parental provisioning behaviour to understand the causes, constraints and costs of parental care. 
-
-* **Pick JL**, Senior A, & Nakagawa S. The impact of environmental amelioration on the plasticity of reproductive traits: a meta-analysis.
 
