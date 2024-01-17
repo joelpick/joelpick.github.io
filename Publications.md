@@ -15,20 +15,30 @@ George Bernard Shaw
 
 PRE-PRINTS
 
-* Macphie, KH, Samplonius JM, **Pick JL**, Hadfield JD & Phillimore AB (2022). Warmer Springs Lead to Earlier and Higher Peaks of Arboreal Caterpillars. *EcoEvoRxiv*. [doi:10.32942/osf.io/fh3xv](https://ecoevorxiv.org/fh3xv/)
-
-* **Pick JL**, Khwaja N, Spence MA, Ihle M & Nakagawa S (2019) Counter culture: Causes, extent and solutions of systematic bias in the analysis of behavioural counts. *EcoEvoRxiv*, [doi:10.32942/osf.io/jq9n6](https://ecoevorxiv.org/jq9n6/)
-
+* **Pick JL**, Spence M, Ihle M, Schroeder J, Burke T, & Nakagawa S. Decomposing parental provisioning behaviour to understand the causes, constraints and costs of parental care. *EcoEvoRxiv*.
 
 
 PEER REVIEWED PUBLICATIONS:
+
+* **Pick JL**, Khwaja N, Spence MA, Ihle M & Nakagawa S (2023) Counter culture: Causes, extent and solutions of systematic bias in the analysis of behavioural counts. *PeerJ*, 11, e15059. [doi:10.7717/peerj.15059](https://peerj.com/articles/15059/)
+
+* **Pick JL**, Kasper C, Allegue H, Dingemanse N, Dochtermann NA, Laskowski K, Lima MR, Schielzeth H, Westneat DF, Wright J & Araya-Ajoy Y (2023) Describing posterior distributions of variance components: Problems and the use of null distributions to aid interpretation. *Methods in Ecology and Evolution*, In Press, [Preprint available](https://ecoevorxiv.org/repository/view/4743/)
+
+* Ivimey-Cook ER, Noble DWA, Nakagawa S, Lajeunesse MJ & **Pick JL** (2023) A framework for improving the reproducibility of data extraction for meta-analysis. *Research Synthesis Methods*, In Press, [Preprint available](https://ecoevorxiv.org/repository/view/4814/)
+
+* Macphie, KH, Samplonius JM, **Pick JL**, Hadfield JD & Phillimore AB (2023). Warmer Springs Lead to Earlier and Higher Peaks of Arboreal Caterpillars. *Functional Ecology*, In Press, [Preprint available](https://ecoevorxiv.org/repository/view/3757/)
+
+* Ivimey-Cook ER, **Pick JL**, Bairos-Novak K, Culina A, Gould E, Grainger M, Marshall BM, Moreau D, Paquet M, Royauté R, Sánchez-Tójar A, Silva I & Windecker SM (2023) Implementing Code Review in the Scientific Workflow: Insights from Ecology and Evolutionary Biology. *Journal of Evolutionary Biology*, In Press, [Preprint available](https://ecoevorxiv.org/repository/view/4814/)
+
+* Nakagawa S, Ivimey-Cook E, Grainger MJ, O’Dea RE, Burke S, Drobniak SM, Gould E, Macartney EL, Morrison K, Martinig AR, Paquet M, **Pick JL**, Pottier P, Ricolfi L, Wilkinson DP, Willcox A, Williams C, Wilson LAB, Windecker SM, Yang Y & Lagisz M. (2023)Method Reporting with Initials for Transparency (MeRIT) promotes more granularity and accountability for author contributions. *Nature Communications*, 14, 1788. [doi:10.1038/s41467-023-37039-1](https://www.nature.com/articles/s41467-023-37039-1)
+
 * **Pick JL**, Lemon H, Thomson C, & Hadfield JD (2022) Decomposing phenotypic skew and its effects on the predicted response to strong selection. *Nature Ecology and Evolution*, 6, 774-785. [doi:10.1038/s41559-022-01694-2](https://www.nature.com/articles/s41559-022-01694-2.pdf?proof=t) [Preprint available](https://ecoevorxiv.org/n4g5z/)
 
 * Gauzere J, Walling CA, **Pick JL**, Watt K, Jack P, Morris A, Morris S, & Pemberton, JM. (2021) The role of maternally transferred antibodies in maternal performance in red deer. *Ecology Letters*, 24, 2065-2076. [doi:10.1111/ele.13834](https://onlinelibrary.wiley.com/doi/full/10.1111/ele.13834)
 
 * **Pick JL**, Hatakeyama M, Ihle KE, Gasparini J, Haussy C, Ishishita S, ... & Tschirren B (2020) Artificial selection reveals the role of transcriptional constraints in the maintenance of life history variation. *Evolution Letters*, 4, 200–211. [doi:10.1002/evl3.166](https://onlinelibrary.wiley.com/doi/full/10.1002/evl3.166)
 
-* Pick, JL, Postma E & Tschirren B (2019) The more you get, the more you give: Positive cascading effects shape the evolutionary potential of prenatal maternal investment. *Evolution Letters*, 3, 412–423. [doi:10.1002/evl3.125](https://onlinelibrary.wiley.com/doi/full/10.1002/evl3.125)
+* **Pick JL**, Postma E & Tschirren B (2019) The more you get, the more you give: Positive cascading effects shape the evolutionary potential of prenatal maternal investment. *Evolution Letters*, 3, 412–423. [doi:10.1002/evl3.125](https://onlinelibrary.wiley.com/doi/full/10.1002/evl3.125)
 
 * **Pick JL**, Nakagawa S & Noble DW (2019) Reproducible, flexible and high throughput data extraction from primary literature: The metaDigitise R package. *Methods in Ecology and Evolution*, 10, 426–431. [doi:10.1111/2041-210X.13118](https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13118)
 
@@ -57,16 +67,4 @@ PEER REVIEWED PUBLICATIONS:
 * Crane JMS, **Pick JL**, Tribe AJ, Vincze E, Hatchwell BJ & Russell AF (2015) Chestnut-crowned babblers show affinity for calls of removed group members: a dual playback without expectancy violation. *Animal Behaviour*, 104, 51-57. [doi:10.1016/j.anbehav.2015.02.022](https://www.sciencedirect.com/science/article/pii/S0003347215000846)
 
 * Giordano M, Costantini D, **Pick JL** & Tschirren B (2015) Female oxidative status, egg antioxidant protection and eggshell pigmentation: a supplemental feeding experiment in great tits. *Behavioural Ecology and Sociobiology*, 69, 777-785. [doi:10.1007/s00265-015-1893-1](https://link.springer.com/article/10.1007/s00265-015-1893-1)
-
-
-
-IN PREPARATION:
-
-* **Pick JL**, Spence M, Ihle M, Schroeder J, Burke T, & Nakagawa S. Decomposing parental provisioning behaviour to understand the causes, constraints and costs of parental care. 
-
-* **Pick JL**, Kasper C, Dochtermann N, Westneat D, Wright J & Araya-Ajoy YG. Describing posterior distributions of variance components: Problems and using null distributions to aid interpretation.
-
-* **Pick JL**, Senior A, & Nakagawa S. The impact of environmental amelioration on the plasticity of reproductive traits: a meta-analysis.
-
-* Moatt JP, Vale PF, McNeil PL, Hudson AL, Savola E, **Pick JL** & Walling CA. Testing the evolutionary basis of dietary restriction.
 

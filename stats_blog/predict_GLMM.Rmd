@@ -1,0 +1,74 @@
+---
+title: "Predicting from GLMMs"
+author: "Joel Pick"
+date: "03/12/2023"
+---
+
+# Jensen's inequality
+
+When using non-linear transformations, it is important to know that if we take the mean on one scale and transform it, it is not the same as taking the mean on the other scale ($f(\bar{x}) \neq \bar{f(x)}$)
+
+```{r}
+x<-rnorm(n=1000, mean=0, sd=1)
+mean(exp(x))
+exp(mean(x))
+```
+
+Importantly the transformation becomes dependent on the variance as well as mean. Here the mean of x is the same as above but variance is larger differs
+
+```{r}
+x<-rnorm(n=1000, mean=0, sd=2)
+mean(exp(x))
+exp(mean(x))
+```
+
+This is a property of the mean, but not all summary stats are affected - for example quantile measures are not (e.g. median, CRIs)
+
+```{r}
+x<-rnorm(n=1000, mean=0, sd=2)
+median(exp(x))
+exp(median(x))
+```
+
+Some of the transformations are know e.g. for the log normal:
+$$\displaystyle \mu_{exp} = \exp \left(\mu_{lat} +{\frac {\sigma ^{2}_{lat}}{2}}\right)$$
+
+The consequence of this for making predictions from GLMMs is that you need to take variance from predictors and random effects that are not being predicted over into account when making model predictions. 
+
+
+# Bernoulli
+
+
+Bernoulli is a fancy name for binary data (0s and 1s), and is a special case of the binomial (where n=1). It is very common data (e.g. survival, sex, etc). It is probably the hardest distribution to conceptualise. There is a fixed variance on the observed scale ( $pq$ ), and so there can't be any overdispersion and we can't work out the residual variance. Essentially it is 'fixed' and everything in the model becomes relative. This makes it difficult to interpret the parameter estimates on the latent scale.
+
+Take the example below 
+
+
+```{r}
+data_bern <- read.csv("bernoulli_data.csv")
+head(data_bern)
+
+var(data_bern$survival)
+
+mean(data_bern$survival) * (1-mean(data_bern$survival))
+
+```
+
+```{r}
+mod1 <- glmer(survival~1+(1|ID),data_bern,family=binomial) 
+mod2 <- glmer(survival~1+temp+(1|ID),data_bern,family=binomial)
+mod3 <- glm(survival~1+temp,data_bern,family=binomial)
+
+id_vars<-c(as.numeric(summary(mod1)$var),as.numeric(summary(mod2)$var))
+id_vars
+
+temp_coef<-cbind(summary(mod2)$coef[2,1],coef(mod3)[2])
+temp_coef
+
+```
+
+In both the cases the beta/variance change when there is something else in the model 
+
+However, if we look at it proportionally, then they don't
+
+This is because it is always relative to the 'fixed' residual component (1 for probit and pi^2/3 for logit)
