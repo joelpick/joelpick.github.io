@@ -13,22 +13,17 @@ George Bernard Shaw
 <br />
 
 
-PRE-PRINTS
-
-* **Pick JL**, Spence M, Ihle M, Schroeder J, Burke T, & Nakagawa S. Decomposing parental provisioning behaviour to understand the causes, constraints and costs of parental care. *EcoEvoRxiv*.
-
-
 PEER REVIEWED PUBLICATIONS:
+
+* **Pick JL**, Kasper C, Allegue H, Dingemanse N, Dochtermann NA, Laskowski K, Lima MR, Schielzeth H, Westneat DF, Wright J & Araya-Ajoy Y (2023) Describing posterior distributions of variance components: Problems and the use of null distributions to aid interpretation. *Methods in Ecology and Evolution*, 14, 2557-2574. [doi:10.1111/2041-210X.14200](https://doi.org/10.1111/2041-210X.14200)
 
 * **Pick JL**, Khwaja N, Spence MA, Ihle M & Nakagawa S (2023) Counter culture: Causes, extent and solutions of systematic bias in the analysis of behavioural counts. *PeerJ*, 11, e15059. [doi:10.7717/peerj.15059](https://peerj.com/articles/15059/)
 
-* **Pick JL**, Kasper C, Allegue H, Dingemanse N, Dochtermann NA, Laskowski K, Lima MR, Schielzeth H, Westneat DF, Wright J & Araya-Ajoy Y (2023) Describing posterior distributions of variance components: Problems and the use of null distributions to aid interpretation. *Methods in Ecology and Evolution*, In Press, [Preprint available](https://ecoevorxiv.org/repository/view/4743/)
+* Ivimey-Cook ER, Noble DWA, Nakagawa S, Lajeunesse MJ & **Pick JL** (2023) A framework for improving the reproducibility of data extraction for meta-analysis. *Research Synthesis Methods*, 14, 911-915. [doi:10.1002/jrsm.1663](https://doi.org/10.1002/jrsm.1663.)
 
-* Ivimey-Cook ER, Noble DWA, Nakagawa S, Lajeunesse MJ & **Pick JL** (2023) A framework for improving the reproducibility of data extraction for meta-analysis. *Research Synthesis Methods*, In Press, [Preprint available](https://ecoevorxiv.org/repository/view/4814/)
+* Macphie, KH, Samplonius JM, **Pick JL**, Hadfield JD & Phillimore AB (2023). Warmer Springs Lead to Earlier and Higher Peaks of Arboreal Caterpillars. *Functional Ecology*, 37, 3015-3026. [doi:10.1111/1365-2435.14436](https://doi.org/10.1111/1365-2435.14436)
 
-* Macphie, KH, Samplonius JM, **Pick JL**, Hadfield JD & Phillimore AB (2023). Warmer Springs Lead to Earlier and Higher Peaks of Arboreal Caterpillars. *Functional Ecology*, In Press, [Preprint available](https://ecoevorxiv.org/repository/view/3757/)
-
-* Ivimey-Cook ER, **Pick JL**, Bairos-Novak K, Culina A, Gould E, Grainger M, Marshall BM, Moreau D, Paquet M, Royauté R, Sánchez-Tójar A, Silva I & Windecker SM (2023) Implementing Code Review in the Scientific Workflow: Insights from Ecology and Evolutionary Biology. *Journal of Evolutionary Biology*, In Press, [Preprint available](https://ecoevorxiv.org/repository/view/4814/)
+* Ivimey-Cook ER, **Pick JL**, Bairos-Novak K, Culina A, Gould E, Grainger M, Marshall BM, Moreau D, Paquet M, Royauté R, Sánchez-Tójar A, Silva I & Windecker SM (2023) Implementing Code Review in the Scientific Workflow: Insights from Ecology and Evolutionary Biology. *Journal of Evolutionary Biology*, 36, 1347-1356. [doi:10.1111/jeb.14230](https://doi.org/10.1111/jeb.14230)
 
 * Nakagawa S, Ivimey-Cook E, Grainger MJ, O’Dea RE, Burke S, Drobniak SM, Gould E, Macartney EL, Morrison K, Martinig AR, Paquet M, **Pick JL**, Pottier P, Ricolfi L, Wilkinson DP, Willcox A, Williams C, Wilson LAB, Windecker SM, Yang Y & Lagisz M. (2023)Method Reporting with Initials for Transparency (MeRIT) promotes more granularity and accountability for author contributions. *Nature Communications*, 14, 1788. [doi:10.1038/s41467-023-37039-1](https://www.nature.com/articles/s41467-023-37039-1)
 
@@ -68,3 +63,16 @@ PEER REVIEWED PUBLICATIONS:
 
 * Giordano M, Costantini D, **Pick JL** & Tschirren B (2015) Female oxidative status, egg antioxidant protection and eggshell pigmentation: a supplemental feeding experiment in great tits. *Behavioural Ecology and Sociobiology*, 69, 777-785. [doi:10.1007/s00265-015-1893-1](https://link.springer.com/article/10.1007/s00265-015-1893-1)
 
+<<<<<<< HEAD
+=======
+
+
+IN PREPARATION:
+
+* **Pick JL**, Spence M, Ihle M, Schroeder J, Burke T, & Nakagawa S. Decomposing parental provisioning behaviour to understand the causes, constraints and costs of parental care. 
+
+* **Pick JL**, Senior A, & Nakagawa S. The impact of environmental amelioration on the plasticity of reproductive traits: a meta-analysis.
+
+* Moatt JP, Vale PF, McNeil PL, Hudson AL, Savola E, **Pick JL** & Walling CA. Testing the evolutionary basis of dietary restriction.
+
+>>>>>>> 0be8a5154d6019dea8f547ca9ab46025b6a7ebb2
