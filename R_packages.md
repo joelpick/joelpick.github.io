@@ -30,7 +30,7 @@ shinyDigitise is a shiny interface for metaDigitise
 
 <br />
 
-<img id='logo4' src='measurRe.jpeg' align='left' alt='' style='padding-right:20px;' width='100'>
+<img id='logo4' src='measurRe.png' align='left' alt='' style='padding-right:20px;' width='100'>
 
 # [measuRe](https://github.com/joelpick/measuRe) 
 with Ed Ivimey-Cook

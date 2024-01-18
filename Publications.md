@@ -62,17 +62,3 @@ PEER REVIEWED PUBLICATIONS:
 * Crane JMS, **Pick JL**, Tribe AJ, Vincze E, Hatchwell BJ & Russell AF (2015) Chestnut-crowned babblers show affinity for calls of removed group members: a dual playback without expectancy violation. *Animal Behaviour*, 104, 51-57. [doi:10.1016/j.anbehav.2015.02.022](https://www.sciencedirect.com/science/article/pii/S0003347215000846)
 
 * Giordano M, Costantini D, **Pick JL** & Tschirren B (2015) Female oxidative status, egg antioxidant protection and eggshell pigmentation: a supplemental feeding experiment in great tits. *Behavioural Ecology and Sociobiology*, 69, 777-785. [doi:10.1007/s00265-015-1893-1](https://link.springer.com/article/10.1007/s00265-015-1893-1)
-
-<<<<<<< HEAD
-=======
-
-
-IN PREPARATION:
-
-* **Pick JL**, Spence M, Ihle M, Schroeder J, Burke T, & Nakagawa S. Decomposing parental provisioning behaviour to understand the causes, constraints and costs of parental care. 
-
-* **Pick JL**, Senior A, & Nakagawa S. The impact of environmental amelioration on the plasticity of reproductive traits: a meta-analysis.
-
-* Moatt JP, Vale PF, McNeil PL, Hudson AL, Savola E, **Pick JL** & Walling CA. Testing the evolutionary basis of dietary restriction.
-
->>>>>>> 0be8a5154d6019dea8f547ca9ab46025b6a7ebb2
