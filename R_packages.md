@@ -8,7 +8,7 @@ title: R packages
 # [squidSim](https://github.com/squidgroup/squidSim)
 with the [SQuID working group](http://squidgroup.org)
 
-squidSim is a high flexible tool for simulating data from mixed effects models
+squidSim is a high flexible tool for simulating data from mixed effects models. An extensive vignette for this package can be found [here](https://squidgroup.org/squidSim_vignette/)
 
 <br />
 
@@ -17,7 +17,7 @@ squidSim is a high flexible tool for simulating data from mixed effects models
 # [metaDigitise](https://github.com/daniel1noble/metaDigitise)
 with Dan Noble and Shinichi Nakagawa
 
-metaDigitise is a tool that helps extract data from figures, primarily designed for meta-analysis
+metaDigitise is a tool that helps extract data from figures, primarily designed for meta-analysis. We have extensive [documentation](https://github.com/daniel1noble/metaDigitise) and a [video tutorial](https://www.youtube.com/watch?v=2Q8TzgRSACM).
 
 <br />
 
@@ -26,11 +26,11 @@ metaDigitise is a tool that helps extract data from figures, primarily designed 
 # [shinyDigitise](https://github.com/EIvimeyCook/ShinyDigitise)
 with Ed Ivimey-Cook
 
-shinyDigitise is a shiny interface for metaDigitise
+shinyDigitise is a shiny interface for metaDigitise, for which we have a [video tutorial](https://www.youtube.com/watch?v=b9KvRsO8SPY).
 
 <br />
 
-<img id='logo4' src='measurRe.png' align='left' alt='' style='padding-right:20px;' width='100'>
+<img id='logo4' src='measuRe.png' align='left' alt='' style='padding-right:20px;' width='100'>
 
 # [measuRe](https://github.com/joelpick/measuRe) 
 with Ed Ivimey-Cook
