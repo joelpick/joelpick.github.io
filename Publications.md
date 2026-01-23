@@ -15,6 +15,37 @@ George Bernard Shaw
 
 PEER REVIEWED PUBLICATIONS:
 
+
+## Pre-prints/In review
+
+* **Pick JL**, et al (2025) squidSim: A flexible R package for structured and reproducible simulations in Ecology and Evolutionary Biology. *EcoEvoRxiv*, [doi:10.32942/X20M0T](https://doi.org/10.32942/X20M0T)
+
+* **Pick JL**, et al (2025) The SORTEE Guidelines for Data and Code Quality Control in Ecology and Evolutionary Biology. *EcoEvoRxiv*, [doi:10.32942/X24P8S](https://doi.org/10.32942/X24P8S)
+
+* Ivimey-Cook ER, … **Pick JL** (2025) TADA! Simple guidelines to improve code sharing. *EcoEvoRxiv*, [doi:10.32942/X2D93K](https://doi.org/10.32942/X2D93K)
+
+* Strickland K, Höner OP, Arantes LS, **Pick JL**, Aase K, Kruuk LEB & Davidian E (2025) Microevolutionary consequences of social structure in wild spotted hyenas. *EcoEvoRxiv*, [doi:10.32942/X2ZW89](https://doi.org/10.32942/X2ZW89)
+
+* Winder LA, **Pick JL**, Schroeder J, Simons MJP & Burke T (2025) Examining the genetic and phenotypic correlation between survival and fecundity in a wild bird. *bioRxiv*, [doi:10.1101/2025.05.14.653981](https://doi.org/10.1101/2025.05.14.653981) 
+
+* Ravindran S, Corripio-Miyar Y, **Pick JL**, Bal X, Pilkington JG, Pemberton JM, Nussey DH & Froy H (2025) Plasma insulin-like growth-factor 1 (IGF-1) concentrations predict early life-history traits in a wild mammal. *bioRxiv*, [doi:10.1101/2025.06.02.656453](https://doi.org/10.1101/2025.06.02.656453) 
+
+## Published
+
+* **Pick JL**, Walling CA & Kruuk LEB (2025) Simple maternal effects animal models may provide biased estimates of additive genetic and maternal variation. *Journal of Evolutionary Biology*, 38, 1556–1572, https://doi.org/10.1093/jeb/voaf104
+
+* King JG, **Pick JL** & Hadfield JD (2025) Quantifying the correlation between variance components: An extension to the double‐hierarchical generalised linear model. *Methods in Ecology and Evolution*, 16, 2345-2361, https://doi.org/10.1111/2041-210X.70087. 
+
+* Ivimey-Cook ER, …, **Pick JL**, et al (2025) From policy to practice: progress towards data-and code-sharing in ecology and evolution. *Proceedings of the Royal Society B*, 292, 20251394, https://doi.org/10.1098/rspb.2025.1394. 
+
+* Nakagawa S, Westneat DF, Mizuno A, Araya Ajoy YG, Dochtermann NA, Laskowski K, **Pick JL**, Réale D, Williams C, Wright J & Schielzeth H (2025) Understanding different types of repeatability and intra-class correlation for an analysis of biological variation. *Journal of the Royal Society Interface*, In Press
+
+*  Reale D, Allegue H, Araya-Ajoy YG, Dochtermann N, Nakagawa S, **Pick JL**, Schielzeth H, Westneat D & Dingemanse N (2025) Avoiding misleading estimates of among‐individual variance caused by non‐random sampling of individuals in a changeable environment. *Methods in Ecology and Evolution*, In Press
+
+* Winder LA, Hogger Gadsby J, Wellman E, **Pick JL**, Simons MJP & Burke T (2025) Separating the genetic and environmental drivers of body temperature during the development of endothermy in an altricial bird. *Journal of Evolutionary Biology*, [doi:10.1093/jeb/voaf135](https://doi.org/10.1093/jeb/voaf135)
+
+* Noble DWA, …, **Pick JL**, et al (2025) The promise of community-driven preprints in ecology and evolution. *Proceedings of the Royal Society B*, 292 20241487. [doi:10.1098/rspb.2024.1487](https://doi.org/10.1098/rspb.2024.1487).
+
 * **Pick JL**, Kasper C, Allegue H, Dingemanse N, Dochtermann NA, Laskowski K, Lima MR, Schielzeth H, Westneat DF, Wright J & Araya-Ajoy Y (2023) Describing posterior distributions of variance components: Problems and the use of null distributions to aid interpretation. *Methods in Ecology and Evolution*, 14, 2557-2574. [doi:10.1111/2041-210X.14200](https://doi.org/10.1111/2041-210X.14200)
 
 * **Pick JL**, Khwaja N, Spence MA, Ihle M & Nakagawa S (2023) Counter culture: Causes, extent and solutions of systematic bias in the analysis of behavioural counts. *PeerJ*, 11, e15059. [doi:10.7717/peerj.15059](https://peerj.com/articles/15059/)
