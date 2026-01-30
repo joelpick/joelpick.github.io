@@ -33,7 +33,9 @@ George Bernard Shaw
 #### 2026
 * Nakagawa S, Westneat DF, Mizuno A, Araya Ajoy YG, Dochtermann NA, Laskowski K, **Pick JL**, Réale D, Williams C, Wright J & Schielzeth H (2026) Understanding different types of repeatability and intra-class correlation for an analysis of biological variation. *Journal of the Royal Society Interface*, In Press [Preprint available](https://doi.org/10.32942/X22D1R)
 
-*  Reale D, Allegue H, Araya-Ajoy YG, Dochtermann N, Nakagawa S, **Pick JL**, Schielzeth H, Westneat D & Dingemanse N (2026) Avoiding misleading estimates of among‐individual variance caused by non‐random sampling of individuals in a changeable environment. *Methods in Ecology and Evolution*, In Press
+* Reale D, Allegue H, Araya-Ajoy YG, Dochtermann N, Nakagawa S, **Pick JL**, Schielzeth H, Westneat D & Dingemanse N (2026) Avoiding misleading estimates of among‐individual variance caused by non‐random sampling of individuals in a changeable environment. *Methods in Ecology and Evolution*, In Press
+
+* Tschirren B, **Pick JL**, Hudson DW, Vedder O, Postma E & Romero-Haro AA (2026) Artificial selection for increased reproductive effort accelerates actuarial senescence and reduces lifespan in a precocial bird. *Proceedings of the Royal Society B*, In Press
 
 #### 2025
 * **Pick JL**, Walling CA & Kruuk LEB (2025) Simple maternal effects animal models may provide biased estimates of additive genetic and maternal variation. *Journal of Evolutionary Biology*, 38, 1556–1572, [doi:10.1093/jeb/voaf104](https://doi.org/10.1093/jeb/voaf104)
