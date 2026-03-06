@@ -17,8 +17,6 @@ George Bernard Shaw
 
 * **Pick JL**, et al (2025) squidSim: A flexible R package for structured and reproducible simulations in Ecology and Evolutionary Biology. *EcoEvoRxiv*, [doi:10.32942/X20M0T](https://doi.org/10.32942/X20M0T)
 
-* **Pick JL**, et al (2025) The SORTEE Guidelines for Data and Code Quality Control in Ecology and Evolutionary Biology. *EcoEvoRxiv*, [doi:10.32942/X24P8S](https://doi.org/10.32942/X24P8S)
-
 * Ivimey-Cook ER, … **Pick JL** (2025) TADA! Simple guidelines to improve code sharing. *EcoEvoRxiv*, [doi:10.32942/X2D93K](https://doi.org/10.32942/X2D93K)
 
 * Strickland K, Höner OP, Arantes LS, **Pick JL**, Aase K, Kruuk LEB & Davidian E (2025) Microevolutionary consequences of social structure in wild spotted hyenas. *EcoEvoRxiv*, [doi:10.32942/X2ZW89](https://doi.org/10.32942/X2ZW89)
@@ -31,6 +29,8 @@ George Bernard Shaw
 ### Peer-Reviewed Publications
 
 #### 2026
+* **Pick JL**, et al (2026) The SORTEE Guidelines for Data and Code Quality Control in Ecology and Evolutionary Biology. *Peer Community Journal*, In Press
+
 * Laskowski K, O’Dea RE &  **Pick JL** (2026) Replication studies: a win-win for early-career training and behavioral ecology. *Behavioral Ecology*, In Press
 
 * Nakagawa S, Westneat DF, Mizuno A, Araya Ajoy YG, Dochtermann NA, Laskowski K, **Pick JL**, Réale D, Williams C, Wright J & Schielzeth H (2026) Understanding different types of repeatability and intra-class correlation for an analysis of biological variation. *Journal of the Royal Society Interface*, 23, 20250545. [doi:10.1098/rsif.2025.0545](https://doi.org/10.1098/rsif.2025.0545)
