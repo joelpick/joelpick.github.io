@@ -17,27 +17,30 @@ George Bernard Shaw
 
 * **Pick JL**, et al (2025) squidSim: A flexible R package for structured and reproducible simulations in Ecology and Evolutionary Biology. *EcoEvoRxiv*, [doi:10.32942/X20M0T](https://doi.org/10.32942/X20M0T)
 
+* Dobson S, **Pick JL**, Mittell EA, Kruuk LEB, Walling CA (2026) The use of multi-response models to improve inferences about natural selection. *EcoEvoRxiv*, [doi:10.32942/X27Q2S](https://doi.org/10.32942/X27Q2S)
+
 * Ivimey-Cook ER, … **Pick JL** (2025) TADA! Simple guidelines to improve code sharing. *EcoEvoRxiv*, [doi:10.32942/X2D93K](https://doi.org/10.32942/X2D93K)
 
 * Strickland K, Höner OP, Arantes LS, **Pick JL**, Aase K, Kruuk LEB & Davidian E (2025) Microevolutionary consequences of social structure in wild spotted hyenas. *EcoEvoRxiv*, [doi:10.32942/X2ZW89](https://doi.org/10.32942/X2ZW89)
 
 * Winder LA, **Pick JL**, Schroeder J, Simons MJP & Burke T (2025) Examining the genetic and phenotypic correlation between survival and fecundity in a wild bird. *bioRxiv*, [doi:10.1101/2025.05.14.653981](https://doi.org/10.1101/2025.05.14.653981) 
 
-* Ravindran S, Corripio-Miyar Y, **Pick JL**, Bal X, Pilkington JG, Pemberton JM, Nussey DH & Froy H (2025) Plasma insulin-like growth-factor 1 (IGF-1) concentrations predict early life-history traits in a wild mammal. *bioRxiv*, [doi:10.1101/2025.06.02.656453](https://doi.org/10.1101/2025.06.02.656453) 
 
 
 ### Peer-Reviewed Publications
 
 #### 2026
-* **Pick JL**, et al (2026) The SORTEE Guidelines for Data and Code Quality Control in Ecology and Evolutionary Biology. *Peer Community Journal*, In Press
+* **Pick JL**, et al (2026) The SORTEE Guidelines for Data and Code Quality Control in Ecology and Evolutionary Biology. *Peer Community Journal*, 6, e20. [doi:10.24072/pcjournal.687](https://doi.org/10.24072/pcjournal.687)
 
-* Laskowski K, O’Dea RE &  **Pick JL** (2026) Replication studies: a win-win for early-career training and behavioral ecology. *Behavioral Ecology*, In Press
+* Laskowski K, O’Dea RE & **Pick JL** (2026) Replication studies: a win-win for early-career training and behavioral ecology. *Behavioral Ecology*,  37, araf158. [doi:10.1093/beheco/araf158](https://doi.org/10.1093/beheco/araf158)
 
 * Nakagawa S, Westneat DF, Mizuno A, Araya Ajoy YG, Dochtermann NA, Laskowski K, **Pick JL**, Réale D, Williams C, Wright J & Schielzeth H (2026) Understanding different types of repeatability and intra-class correlation for an analysis of biological variation. *Journal of the Royal Society Interface*, 23, 20250545. [doi:10.1098/rsif.2025.0545](https://doi.org/10.1098/rsif.2025.0545)
 
-* Reale D, Allegue H, Araya-Ajoy YG, Dochtermann N, Nakagawa S, **Pick JL**, Schielzeth H, Westneat D & Dingemanse N (2026) Avoiding misleading estimates of among‐individual variance caused by non‐random sampling of individuals in a changeable environment. *Methods in Ecology and Evolution*, In Press
+* Ravindran S, Corripio-Miyar Y, **Pick JL**, Bal X, Pilkington JG, Pemberton JM, Nussey DH & Froy H (2025) Plasma insulin-like growth-factor 1 (IGF-1) concentrations predict early life-history traits in a wild mammal. *Functional Ecology*, In Press. Preprint: [doi:10.1101/2025.06.02.656453](https://doi.org/10.1101/2025.06.02.656453) 
 
-* Tschirren B, **Pick JL**, Hudson DW, Vedder O, Postma E & Romero-Haro AA (2026) Artificial selection for increased reproductive effort accelerates actuarial senescence and reduces lifespan in a precocial bird. *Proceedings of the Royal Society B*, In Press
+* Reale D, Allegue H, Araya-Ajoy YG, Dochtermann N, Nakagawa S, **Pick JL**, Schielzeth H, Westneat D & Dingemanse N (2026) Avoiding misleading estimates of among‐individual variance caused by non‐random sampling of individuals in a changeable environment. *Methods in Ecology and Evolution*, 17, 1161–1174. [doi:10.1111/2041-210x.70202](https://doi.org/10.1111/2041-210x.70202)
+
+* Tschirren B, **Pick JL**, Hudson DW, Vedder O, Postma E & Romero-Haro AA (2026) Artificial selection for increased reproductive effort accelerates actuarial senescence and reduces lifespan in a precocial bird. *Proceedings of the Royal Society B*, 293, 20252908. [doi:10.1098/rspb.2025.2908](https://doi.org/10.1098/rspb.2025.2908)
 
 #### 2025
 * **Pick JL**, Walling CA & Kruuk LEB (2025) Simple maternal effects animal models may provide biased estimates of additive genetic and maternal variation. *Journal of Evolutionary Biology*, 38, 1556–1572. [doi:10.1093/jeb/voaf104](https://doi.org/10.1093/jeb/voaf104)
