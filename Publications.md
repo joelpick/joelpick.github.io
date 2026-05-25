@@ -17,8 +17,7 @@ George Bernard Shaw
 
 * **Pick JL**, et al (2025) squidSim: A flexible R package for structured and reproducible simulations in Ecology and Evolutionary Biology. *EcoEvoRxiv*, [doi:10.32942/X20M0T](https://doi.org/10.32942/X20M0T)
 
-* Cabugos L$^*$, **Pick JL**$^*$ & Purgar M$^*$ (2026) What do ecology and evolutionary biology journal websites communicate about their policies and preferences regarding replication studies? *EcoEvoRxiv*, [doi:10.32942/X27W95](https://doi.org/10.32942/X27W95) 
-$^*$ Equal contribution 
+* Cabugos L*, **Pick JL*** & Purgar M* (2026) What do ecology and evolutionary biology journal websites communicate about their policies and preferences regarding replication studies? *EcoEvoRxiv*, [doi:10.32942/X27W95](https://doi.org/10.32942/X27W95) * Equal contribution 
 
 * Dobson S, **Pick JL**, Mittell EA, Kruuk LEB & Walling CA (2026) The use of multi-response models to improve inferences about natural selection. *EcoEvoRxiv*, [doi:10.32942/X27Q2S](https://doi.org/10.32942/X27Q2S)
 
