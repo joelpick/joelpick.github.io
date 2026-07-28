@@ -17,6 +17,10 @@ George Bernard Shaw
 
 * **Pick JL**, et al (2025) squidSim: A flexible R package for structured and reproducible simulations in Ecology and Evolutionary Biology. *EcoEvoRxiv*, [doi:10.32942/X20M0T](https://doi.org/10.32942/X20M0T)
 
+* **Pick JL**, Araya-Ajoy YG, Froy H, Ivimey-Cook ER, Ravindran S & Walling CA (2026) A simple demographic explanation for the evolution of the dietary restriction response and its ecological relevance. *EcoEvoRxiv*, [doi:10.32942/X2ZT1Z](https://doi.org/10.32942/X2ZT1Z)
+
+* Bharadwaj A, **Pick JL** & Lenzner B (2026) Colonial legacies in eponymous species names: a global network perspective. *bioRxiv* [doi:10.64898/2026.07.25.740734](https://doi.org/10.64898/2026.07.25.740734)
+
 * Cabugos L\*, **Pick JL**\* & Purgar M\* (2026) What do ecology and evolutionary biology journal websites communicate about their policies and preferences regarding replication studies? *EcoEvoRxiv*, [doi:10.32942/X27W95](https://doi.org/10.32942/X27W95) \*Equal contribution 
 
 * Dobson S, **Pick JL**, Mittell EA, Kruuk LEB & Walling CA (2026) The use of multi-response models to improve inferences about natural selection. *EcoEvoRxiv*, [doi:10.32942/X27Q2S](https://doi.org/10.32942/X27Q2S)
